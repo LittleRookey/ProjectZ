@@ -13,8 +13,17 @@ public class Enemy : Character
         dropGold = m_dropGold;
         dropExp = m_dropExp;
     }
-
     
+    public int getDropGold()
+    {
+        return dropGold;
+    }
+
+    public int getDropExp()
+    {
+        return dropExp;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Character : MonoBehaviour
+public class Character : MonoBehaviour
 {
+    [SerializeField]
     protected string char_name;
+
     protected float currentHP;
+    [SerializeField]
     protected float maxHP;
+    [SerializeField]
     protected float attack;
+    [SerializeField]
     protected float defense;
     
 
@@ -20,6 +25,10 @@ public abstract class Character : MonoBehaviour
         defense = m_def;
     }
 
+    public bool isDead()
+    {
+        return currentHP <= 0;
+    }
 
     public void Attack(Character target)
     {
@@ -31,16 +40,29 @@ public abstract class Character : MonoBehaviour
         currentHP = currentHP - HP + defense;
     }
 
-
-    // Start is called before the first frame update
-    void Start()
+    public string getName()
     {
-        
+        return char_name;
     }
 
-    // Update is called once per frame
-    void Update()
+    public float getMaxHP()
     {
-        
+        return maxHP;
     }
+    
+    public float getCurrentHP()
+    {
+        return currentHP;
+    }
+
+    public float getAttack()
+    {
+        return attack;
+    }
+
+    public float getDefense()
+    {
+        return defense;
+    }
+
 }
