@@ -13,7 +13,7 @@ public class Enemy : Character
         dropGold = m_dropGold;
         dropExp = m_dropExp;
     }
-    
+
     public int getDropGold()
     {
         return dropGold;
@@ -24,6 +24,17 @@ public class Enemy : Character
         return dropExp;
     }
 
+    public override bool IsEnemy()
+    {
+        return true;
+    }
+
+    public override bool IsPlayer()
+    {
+        return false;
+    }
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +44,9 @@ public class Enemy : Character
     // Update is called once per frame
     void Update()
     {
-        
+        if(isDead())
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 }

@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
     {
         if(enemy.isDead())
         {
-            
+            // 지금몬스터는 없애고 다음몬스터소환 다음씬으로넘어가면
         }
     }
 

@@ -50,6 +50,21 @@ public class PlayerController : Character
         currentHP = maxHP;
         
     }
+
+    public override bool IsEnemy()
+    {
+        return false;
+    }
+
+    public override bool IsPlayer()
+    {
+        return true;
+    }
+
+    public int GetLevel()
+    {
+        return level;
+    }
     // Start is called before the first frame update
     void Start()
     {

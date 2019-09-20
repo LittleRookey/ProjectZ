@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public abstract class Character : MonoBehaviour
 {
     [SerializeField]
     protected string char_name;
@@ -29,6 +29,10 @@ public class Character : MonoBehaviour
     {
         return currentHP <= 0;
     }
+
+    public abstract bool IsEnemy();
+
+    public abstract bool IsPlayer();
 
     public void Attack(Character target)
     {
