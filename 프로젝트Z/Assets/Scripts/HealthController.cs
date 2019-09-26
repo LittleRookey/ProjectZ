@@ -8,27 +8,30 @@ public class HealthController : MonoBehaviour
     [SerializeField]
     private Canvas canvas;
 
-    public Image healthBar;
+    public Image healthBarEnemy;
 
+    [SerializeField]
+    public Image PlayerHPBar;
+
+    public List<Health> currentHealths;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
-    public void LocateHealthBar(Enemy enemy)
+    public void LocateHealthBar(List<Enemy> enemy)
     {
-        Image enemHealthBar = Instantiate(healthBar);
-        enemHealthBar.gameObject.transform.SetParent(canvas.transform);
-        enemHealthBar.transform.position = enemy.transform.position + Vector3.up * 3;
-        enemHealthBar.transform.localScale = Vector3.one;
+        for(int i = 0; i < enemy.Count; ++i)
+        {
+            Image enemHealthBar = Instantiate(healthBarEnemy, canvas.transform);
+            enemHealthBar.transform.position = enemy[i].transform.position + Vector3.up * 2f;
+            enemHealthBar.transform.localScale = Vector3.one;
 
-        // set canvas as parent TODO
-    }
-
-    public void ResetHealthBar()
-    {
-        healthBar.fillAmount *= 100;
+            //health connect with enemy
+            currentHealths.Add(enemHealthBar.GetComponentInChildren<Health>());
+            enemy[i].health = currentHealths[i];
+        }
     }
 
     

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class TouchManager : MonoBehaviour
 {
+    public static TouchManager touchManager;
+
     Camera mMaincamera;
     [SerializeField]
     private PlayerController player;
 
-    [SerializeField]
-    private Enemy enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,19 @@ public class TouchManager : MonoBehaviour
         mMaincamera = Camera.main;
         
     }
-    
+
+    private void Awake()
+    {
+        if (touchManager == null)
+        {
+            touchManager = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private bool CheckTouch()
     {
         int touchCount = Input.touchCount;
@@ -89,15 +101,14 @@ public class TouchManager : MonoBehaviour
 
 
             Ray ray = new Ray(nearPos, farPos - nearPos);
-            Debug.Log("farpos:" + farPos);
-            Debug.Log("nearpos:" + nearPos);
+
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.collider.gameObject == gameObject)
                 {
                     // effect instantiate
-                    player.Attack(enemy);
+                    player.Attack(GameController.Instance.currentEnemy[0]);
                     Debug.Log("Attacked player");
                 }
             }

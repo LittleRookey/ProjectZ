@@ -8,11 +8,15 @@ public class PlayerController : Character
     private int m_gold;
 
     private int level;
+    [SerializeField]
     private int maxExp;
+    [SerializeField]
     private int currentExp;
 
-    private List<Item> p_inventory;
+    public Health health;
 
+    private List<Item> p_inventory;
+    
     public PlayerController(string p_name, float p_hp, float p_attk, float p_def) 
         : base(p_name, p_hp, p_attk, p_def)
     {
@@ -65,6 +69,8 @@ public class PlayerController : Character
     {
         return level;
     }
+
+
     // Start is called before the first frame update
     void Start()
     {

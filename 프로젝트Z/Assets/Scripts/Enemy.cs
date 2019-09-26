@@ -4,15 +4,18 @@ using UnityEngine;
 
 public enum eEnemyStatus
 {
-    alive, dead, attack
+    dead, Idle
 };
 
 public class Enemy : Character
 {
+    public Animator anim;
+
+    public Health health;
+
     private int dropGold;
     private int dropExp;
     public eEnemyStatus enemyStatus;
-
     private static float ONE_BASE_HP = 100;
     private static float ONE_BASE_ATTACK = 10;
     private static float ONE_BASE_DEFENSE = 5;
@@ -22,7 +25,7 @@ public class Enemy : Character
     {
         dropGold = m_dropGold;
         dropExp = m_dropExp;
-        enemyStatus = eEnemyStatus.alive;
+        enemyStatus = eEnemyStatus.Idle;
     }
 
     public int getDropGold()
@@ -33,6 +36,11 @@ public class Enemy : Character
     public int getDropExp()
     {
         return dropExp;
+    }
+
+    public eEnemyStatus getEnemyState()
+    {
+        return enemyStatus;
     }
 
     public override bool IsEnemy()
@@ -62,34 +70,46 @@ public class Enemy : Character
         defense = givenDefense;
     }
 
-    
+    public bool isActive()
+    {
+        return gameObject.activeInHierarchy;
+    }
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = GameObject.FindGameObjectWithTag("HP").GetComponentInChildren<Health>();
+        //StartCoroutine(Action());
+        enemyStatus = eEnemyStatus.Idle;
     }
 
-    public void Action()
+    
+    public IEnumerator Action()
     {
-        switch(enemyStatus)
+        while (true)
         {
-            case eEnemyStatus.alive:
-                // fade in
-
-                break;
-            case eEnemyStatus.attack:
-                // attack coroutine on + give damage
-                break;
-            case eEnemyStatus.dead:
-                //fade away
-                break;
-            default:
-                break;
+            switch (enemyStatus)
+            {
+                case eEnemyStatus.Idle:
+                    // fade in
+                    anim.SetBool("isIdle", true);
+                    break;
+                case eEnemyStatus.dead:
+                    anim.SetBool("isDead", true);
+                    //fade away
+                    break;
+                default:
+                    break;
+            }
+            yield return new WaitForSeconds(.5f);
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    
 }

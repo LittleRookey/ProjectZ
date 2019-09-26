@@ -6,7 +6,7 @@ public abstract class Character : MonoBehaviour
 {
     [SerializeField]
     protected string char_name;
-
+    [SerializeField]
     protected float currentHP;
     [SerializeField]
     protected float maxHP;
@@ -14,19 +14,22 @@ public abstract class Character : MonoBehaviour
     protected float attack;
     [SerializeField]
     protected float defense;
-    
+
+    public bool isAlive;
 
     public Character(string m_name, float hp, float m_attk, float m_def)
     {
         char_name = m_name;
         maxHP = hp;
-        currentHP = maxHP;
+        currentHP = hp;
         attack = m_attk;
         defense = m_def;
+        isAlive = true;
     }
 
     public bool isDead()
     {
+        isAlive = false;
         return currentHP <= 0;
     }
 
@@ -36,12 +39,58 @@ public abstract class Character : MonoBehaviour
 
     public void Attack(Character target)
     {
-        target.LoseHP(attack);
+        if(target.IsPlayer())
+        {
+            PlayerController temp = ((PlayerController)target);
+            temp.LoseHP(attack);
+            Debug.Log("Player lost hp");
+            temp.health.ShowHP(target.getCurrentHP(), target.getMaxHP());
+            // if dead gameover
+            if (temp.isDead())
+            {
+                Debug.Log("Player dead!!");
+            }
+        } else if(target.IsEnemy())
+        {
+
+            Enemy temp = ((Enemy)target);
+            temp.LoseHP(attack);
+            Debug.Log("Enemy lost hp");
+            temp.health.ShowHP(target.getCurrentHP(), target.getMaxHP());
+            // if dead
+            if (temp.isDead())
+            {
+                temp.anim.SetBool("isIdle", false);
+                temp.anim.SetBool("isDead", true);
+
+               
+                Debug.Log("Enemy dead!!");
+                temp.gameObject.SetActive(false);
+
+                if (GameController.Instance.AllEnemiesDead())
+                {
+                    GameController.Instance.TurnToggle(true);
+                    temp.health.transform.parent.gameObject.SetActive(false);
+                    GameController.Instance.EmptyEnemiesAndHealth();
+                    GameController.Instance.SpawnEnemy(5f);
+                } else
+                {
+
+                }
+                
+            }
+        } else
+        {
+            Debug.Log("Errorrrrrrrrrrr");
+        }
+
+        
     }
 
     public void LoseHP(float HP)
     {
         currentHP = currentHP - HP + defense;
+
     }
 
     public string getName()
@@ -69,4 +118,8 @@ public abstract class Character : MonoBehaviour
         return defense;
     }
 
+    private void Start()
+    {
+        
+    }
 }

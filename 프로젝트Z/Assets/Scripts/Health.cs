@@ -13,12 +13,16 @@ public class Health : MonoBehaviour
     void Start()
     {
         health = GetComponent<Image>();
-        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
     }
 
+    public void ShowHP(float current, float max)
+    {
+        health.fillAmount = current / max;
+    }
     // Update is called once per frame
     void Update()
     {
-        health.fillAmount = enemy.getCurrentHP() / enemy.getMaxHP();
+        
+
     }
 }

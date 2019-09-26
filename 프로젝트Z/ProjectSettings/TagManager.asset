@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - HP
+  - HealthBarPlayer
+  - HealthBarEnemy
+  - PlayerHP
+  - PlayerExp
+  - PlayerBar
   layers:
   - Default
   - TransparentFX
@@ -14,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - HealthBar
   - 
   - 
   - 
@@ -39,6 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: HPText
+    uniqueID: 3109526633
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
