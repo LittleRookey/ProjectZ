@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class TouchManager : MonoBehaviour
 {
-    public static TouchManager touchManager;
+    private static TouchManager instance;
+
+    public static TouchManager Instance
+    {
+        get {
+            return instance;
+        }
+    }
 
     Camera mMaincamera;
     [SerializeField]
@@ -20,13 +27,13 @@ public class TouchManager : MonoBehaviour
 
     private void Awake()
     {
-        if (touchManager == null)
+        if (instance != null && instance != this)
         {
-            touchManager = this;
+            Destroy(this.gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            instance = this;
         }
     }
 
@@ -107,9 +114,12 @@ public class TouchManager : MonoBehaviour
             {
                 if (hit.collider.gameObject == gameObject)
                 {
+                    Debug.Log("Click");
                     // effect instantiate
+                    
                     player.Attack(GameController.Instance.currentEnemy[0]);
                     Debug.Log("Attacked player");
+                    
                 }
             }
         }

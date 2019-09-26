@@ -50,13 +50,14 @@ public abstract class Character : MonoBehaviour
             {
                 Debug.Log("Player dead!!");
             }
-        } else if(target.IsEnemy())
+        }
+        else if(target.IsEnemy())
         {
 
             Enemy temp = ((Enemy)target);
             temp.LoseHP(attack);
             Debug.Log("Enemy lost hp");
-            temp.health.ShowHP(target.getCurrentHP(), target.getMaxHP());
+            temp.health.ShowHP(temp.getCurrentHP(), temp.getMaxHP());
             // if dead
             if (temp.isDead())
             {
@@ -66,17 +67,19 @@ public abstract class Character : MonoBehaviour
                
                 Debug.Log("Enemy dead!!");
                 temp.gameObject.SetActive(false);
-
+                temp.health.transform.parent.gameObject.SetActive(false);
+                GameController.Instance.currentEnemy.RemoveAt(0);
+                
+                // when all enemies are dead in a round
                 if (GameController.Instance.AllEnemiesDead())
                 {
+                    Debug.Log("Enemies all dead");
+                    TouchManager.Instance.gameObject.SetActive(false);
                     GameController.Instance.TurnToggle(true);
-                    temp.health.transform.parent.gameObject.SetActive(false);
                     GameController.Instance.EmptyEnemiesAndHealth();
                     GameController.Instance.SpawnEnemy(5f);
-                } else
-                {
 
-                }
+                } 
                 
             }
         } else

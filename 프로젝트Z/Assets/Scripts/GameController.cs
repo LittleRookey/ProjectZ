@@ -77,8 +77,6 @@ public class GameController : MonoBehaviour
             {
                 Debug.Log("Coroutine Stopped");
                 break;
-                // 코루틴 끊고 하는법? 계속유니티 터짐
-                //StopCoroutine(wait_Run);
             }
             
         }
@@ -96,9 +94,7 @@ public class GameController : MonoBehaviour
             InitGame();
 
             // Spawn enemy by the given number
-
             SpawnEnemy(enemySpawnedThisRound);
-
             LocateEnemies(currentEnemy);
 
             
@@ -109,8 +105,7 @@ public class GameController : MonoBehaviour
     {
         TurnToggle(false);
         toggleOn = false;
-
-        TouchManager.touchManager.gameObject.SetActive(true);
+        TouchManager.Instance.gameObject.SetActive(true);
     }
 
     // after one monster is spawned at the very beginning
@@ -144,24 +139,35 @@ public class GameController : MonoBehaviour
             currentEnemy.Add(clone.GetComponent<Enemy>());
             enemySpawnedNumber++;
         }
+       
     }
 
     // locates enemy to random pos and also locate healthbar to each enemy
     public void LocateEnemies(List<Enemy> enems)
     {
-        List<Transform> temp = new List<Transform>();
-        for(int i = 0; i < enemySpawnPos.Count; ++i)
+        SortEnemy(enems);
+        for (int k = 0; k < enems.Count; ++k)
         {
-            temp.Add(enemySpawnPos[i]);
+            enems[k].transform.position = enemySpawnPos[k].position;
         }
+        healthControl.LocateHealthBar(enems);
+    }
 
-        for(int k = 0; k < enems.Count; ++k)
+    // sorts enemy based on their forwardNumber
+    public List<Enemy> SortEnemy(List<Enemy> lists)
+    {
+        Enemy temp;
+        List<Enemy> newList = lists;
+        for(int i = 1; i < lists.Count; ++i)
         {
-            int randNum = Random.Range(0, temp.Count);
-            enems[k].transform.position = temp[randNum].position;
-            healthControl.LocateHealthBar(currentEnemy);
-            temp.RemoveAt(randNum);
+            if(lists[i-1].getForwardNumber() > lists[i].getForwardNumber())
+            {
+                temp = newList[i];
+                newList.RemoveAt(i);
+                newList.Insert(i - 1, temp);
+            }
         }
+        return newList;
     }
 
     // counts no enemy as all dead 
@@ -172,10 +178,11 @@ public class GameController : MonoBehaviour
 
         if(currentEnemy.Count == 0)
         {
+            Debug.Log("no Enemy");
             return true;
         }
 
-        foreach(Enemy enemy in currentEnemy)
+        foreach (Enemy enemy in currentEnemy)
         {
             allDead = allDead && !enemy.isAlive;
         }
@@ -189,10 +196,7 @@ public class GameController : MonoBehaviour
         healthControl.currentHealths.Clear();
     }
 
-    public void SetNextEnemyToFrontLine()
-    {
-        
-    }
+
 
     public void TurnToggle(bool set)
     {

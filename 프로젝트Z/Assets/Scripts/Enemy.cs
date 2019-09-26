@@ -13,6 +13,9 @@ public class Enemy : Character
 
     public Health health;
 
+    [SerializeField]
+    private int forwardNumber;
+
     private int dropGold;
     private int dropExp;
     public eEnemyStatus enemyStatus;
@@ -20,9 +23,10 @@ public class Enemy : Character
     private static float ONE_BASE_ATTACK = 10;
     private static float ONE_BASE_DEFENSE = 5;
 
-    public Enemy(string e_name, float e_hp, float e_attk, float e_def, int m_dropGold, int m_dropExp)  
+    public Enemy(string e_name, int forwardNum, float e_hp, float e_attk, float e_def, int m_dropGold, int m_dropExp)  
         :base(e_name, e_hp, e_attk, e_def)
     {
+        forwardNumber = forwardNum;
         dropGold = m_dropGold;
         dropExp = m_dropExp;
         enemyStatus = eEnemyStatus.Idle;
@@ -36,6 +40,11 @@ public class Enemy : Character
     public int getDropExp()
     {
         return dropExp;
+    }
+
+    public int getForwardNumber()
+    {
+        return forwardNumber;
     }
 
     public eEnemyStatus getEnemyState()
@@ -84,7 +93,6 @@ public class Enemy : Character
     // Start is called before the first frame update
     void Start()
     {
-        health = GameObject.FindGameObjectWithTag("HP").GetComponentInChildren<Health>();
         //StartCoroutine(Action());
         enemyStatus = eEnemyStatus.Idle;
     }

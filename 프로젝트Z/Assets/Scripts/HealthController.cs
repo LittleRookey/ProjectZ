@@ -25,7 +25,7 @@ public class HealthController : MonoBehaviour
         for(int i = 0; i < enemy.Count; ++i)
         {
             Image enemHealthBar = Instantiate(healthBarEnemy, canvas.transform);
-            enemHealthBar.transform.position = enemy[i].transform.position + Vector3.up * 2f;
+            enemHealthBar.transform.position = enemy[i].transform.position + Vector3.up * 1f;
             enemHealthBar.transform.localScale = Vector3.one;
 
             //health connect with enemy
