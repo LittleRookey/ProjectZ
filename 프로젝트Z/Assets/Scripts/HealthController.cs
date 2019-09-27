@@ -5,6 +5,16 @@ using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
+    private static HealthController instance;
+
+    public static HealthController Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
     [SerializeField]
     private Canvas canvas;
 
@@ -14,14 +24,24 @@ public class HealthController : MonoBehaviour
     public Image PlayerHPBar;
 
     public List<Health> currentHealths;
-    // Start is called before the first frame update
-    void Start()
-    {
 
+    public List<Text> HPTexts;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     public void LocateHealthBar(List<Enemy> enemy)
     {
+        Debug.Log("HP Located");
         for(int i = 0; i < enemy.Count; ++i)
         {
             Image enemHealthBar = Instantiate(healthBarEnemy, canvas.transform);
@@ -30,10 +50,15 @@ public class HealthController : MonoBehaviour
 
             //health connect with enemy
             currentHealths.Add(enemHealthBar.GetComponentInChildren<Health>());
+            HPTexts.Add(enemHealthBar.GetComponentInChildren<Text>());
+
             enemy[i].health = currentHealths[i];
+            enemy[i].healthText = HPTexts[i];
+
+            enemy[i].healthText.text = enemy[i].getCurrentHP().ToString() + " / " 
+                + enemy[i].getMaxHP().ToString();
         }
     }
-
     
     // Update is called once per frame
     void Update()

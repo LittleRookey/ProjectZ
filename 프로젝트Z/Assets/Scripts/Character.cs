@@ -7,25 +7,16 @@ public abstract class Character : MonoBehaviour
     [SerializeField]
     protected string char_name;
     [SerializeField]
-    protected float currentHP;
+    protected int currentHP;
     [SerializeField]
-    protected float maxHP;
+    protected int maxHP;
     [SerializeField]
-    protected float attack;
+    protected int attack;
     [SerializeField]
-    protected float defense;
+    protected int defense;
 
     public bool isAlive;
 
-    public Character(string m_name, float hp, float m_attk, float m_def)
-    {
-        char_name = m_name;
-        maxHP = hp;
-        currentHP = hp;
-        attack = m_attk;
-        defense = m_def;
-        isAlive = true;
-    }
 
     public bool isDead()
     {
@@ -37,6 +28,9 @@ public abstract class Character : MonoBehaviour
 
     public abstract bool IsPlayer();
 
+
+   
+
     public void Attack(Character target)
     {
         if(target.IsPlayer())
@@ -44,7 +38,7 @@ public abstract class Character : MonoBehaviour
             PlayerController temp = ((PlayerController)target);
             temp.LoseHP(attack);
             Debug.Log("Player lost hp");
-            temp.health.ShowHP(target.getCurrentHP(), target.getMaxHP());
+            temp.health.ShowHPAnimation(target.getCurrentHP(), target.getMaxHP(), attack);
             // if dead gameover
             if (temp.isDead())
             {
@@ -57,14 +51,16 @@ public abstract class Character : MonoBehaviour
             Enemy temp = ((Enemy)target);
             temp.LoseHP(attack);
             Debug.Log("Enemy lost hp");
-            temp.health.ShowHP(temp.getCurrentHP(), temp.getMaxHP());
+            temp.health.ShowHPAnimation(temp.getCurrentHP(), temp.getMaxHP(), attack);
             // if dead
             if (temp.isDead())
             {
+                
                 temp.anim.SetBool("isIdle", false);
                 temp.anim.SetBool("isDead", true);
 
-               
+                PlayerController.Instance.GainGoldAndExp(temp);
+
                 Debug.Log("Enemy dead!!");
                 temp.gameObject.SetActive(false);
                 temp.health.transform.parent.gameObject.SetActive(false);
@@ -90,33 +86,36 @@ public abstract class Character : MonoBehaviour
         
     }
 
-    public void LoseHP(float HP)
+    // damage received
+    public void LoseHP(int atk)
     {
-        currentHP = currentHP - HP + defense;
-
+        currentHP -= atk + defense;
+        
     }
+
+
 
     public string getName()
     {
         return char_name;
     }
 
-    public float getMaxHP()
+    public int getMaxHP()
     {
         return maxHP;
     }
     
-    public float getCurrentHP()
+    public int getCurrentHP()
     {
         return currentHP;
     }
 
-    public float getAttack()
+    public int getAttack()
     {
         return attack;
     }
 
-    public float getDefense()
+    public int getDefense()
     {
         return defense;
     }

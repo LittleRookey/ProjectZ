@@ -17,13 +17,16 @@ public class GameController : MonoBehaviour
     }
 
     [SerializeField]
+    private int gameStage = 1;
+
+    [SerializeField]
     private HealthController healthControl;
 
     [SerializeField]
     private EnemyPool enemyPool;
 
     // enemies that can be spawned
-    public List<GameObject> enemies;
+    public List<Enemy> enemies;
 
     [SerializeField]
     public List<Enemy> currentEnemy;
@@ -133,10 +136,17 @@ public class GameController : MonoBehaviour
     // spawn enemy by given number
     public void SpawnEnemy(int num)
     {
+        int playerLevel = PlayerController.Instance.GetLevel();
         for (int i = 0; i < num; ++i)
         {
-            GameObject clone = Instantiate(enemies[Random.Range(0, enemies.Count)]);
-            currentEnemy.Add(clone.GetComponent<Enemy>());
+            Enemy clone = Instantiate(enemies[Random.Range(0, enemies.Count)]);
+            clone.Init((int)((playerLevel + .5 * gameStage) * 100), 
+                (int)((playerLevel + .5 * gameStage) * 10),
+                (int)((playerLevel + .5 * gameStage) * 5),
+                (int)((playerLevel + .5 * gameStage) * ((playerLevel + .5 * gameStage) * 10 + (playerLevel + .5 * gameStage) * 5)/2),
+                (int)(1 * (playerLevel + (gameStage * 1.5)))
+                );
+            currentEnemy.Add(clone);
             enemySpawnedNumber++;
         }
        
@@ -154,20 +164,22 @@ public class GameController : MonoBehaviour
     }
 
     // sorts enemy based on their forwardNumber
-    public List<Enemy> SortEnemy(List<Enemy> lists)
+    public void SortEnemy(List<Enemy> lists)
     {
         Enemy temp;
-        List<Enemy> newList = lists;
-        for(int i = 1; i < lists.Count; ++i)
+
+        for (int i = 0; i < lists.Count; i++)
         {
-            if(lists[i-1].getForwardNumber() > lists[i].getForwardNumber())
+            for (int j = i + 1; j < lists.Count; j++)
             {
-                temp = newList[i];
-                newList.RemoveAt(i);
-                newList.Insert(i - 1, temp);
+                if (lists[i].getForwardNumber() > lists[j].getForwardNumber())
+                {
+                    temp = lists[i];
+                    lists[i] = lists[j];
+                    lists[j] = temp;
+                }
             }
         }
-        return newList;
     }
 
     // counts no enemy as all dead 

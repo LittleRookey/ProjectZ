@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum eEnemyStatus
 {
@@ -12,9 +13,10 @@ public class Enemy : Character
     public Animator anim;
 
     public Health health;
+    public Text healthText;
 
     [SerializeField]
-    private int forwardNumber;
+    private int forwardNumber; // bigger the forward number is, enemy will stand at the front line
 
     private int dropGold;
     private int dropExp;
@@ -22,14 +24,28 @@ public class Enemy : Character
     private static float ONE_BASE_HP = 100;
     private static float ONE_BASE_ATTACK = 10;
     private static float ONE_BASE_DEFENSE = 5;
+    [SerializeField]
+    private bool isTank;
+    [SerializeField]
+    private bool isDPS;
 
-    public Enemy(string e_name, int forwardNum, float e_hp, float e_attk, float e_def, int m_dropGold, int m_dropExp)  
-        :base(e_name, e_hp, e_attk, e_def)
+    //public Enemy(string e_name, int forwardNum, int e_hp, int e_attk, int e_def, int m_dropGold, int m_dropExp)  
+    //    :base(e_name, e_hp, e_attk, e_def)
+    //{
+    //    forwardNumber = forwardNum;
+    //    dropGold = m_dropGold;
+    //    dropExp = m_dropExp;
+    //    enemyStatus = eEnemyStatus.Idle;
+    //}
+
+    public void Init(int hp, int attk, int def, int m_dropGold, int m_dropExp)
     {
-        forwardNumber = forwardNum;
+        maxHP = hp;
+        currentHP = maxHP;
+        attack = attk;
+        defense = def;
         dropGold = m_dropGold;
         dropExp = m_dropExp;
-        enemyStatus = eEnemyStatus.Idle;
     }
 
     public int getDropGold()
@@ -60,28 +76,6 @@ public class Enemy : Character
     public override bool IsPlayer()
     {
         return false;
-    }
-
-    public void SetHP(float givenHP)
-    {
-        maxHP = givenHP;
-    }
-
-
-    public void SetAttack(float givenAttack)
-    {
-        attack = givenAttack;
-    }
-
-
-    public void SetDefense(float givenDefense)
-    {
-        defense = givenDefense;
-    }
-
-    public bool isActive()
-    {
-        return gameObject.activeInHierarchy;
     }
 
     private void Awake()
