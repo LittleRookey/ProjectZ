@@ -1,0 +1,285 @@
+fileFormatVersion: 2
+guid: d437a62429823744ba7afbe247713c89
+timeCreated: 1457678357
+licenseType: Store
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: enemy_cat_m
+    21300002: enemy_cat_e1
+    21300004: enemy_cat_e2
+    21300006: enemy_cat_h
+    21300008: enemy_cat_y1
+    21300010: enemy_cat_h11
+    21300012: enemy_cat_h12
+    21300014: enemy_cat_t
+    21300016: enemy_cat_y2
+    21300018: enemy_cat_b
+    21300020: enemy_cat_h2
+    21300022: enemy_cat_d
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: enemy_cat_m
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 228
+        width: 31
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemy_cat_e1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 242
+        width: 14
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemy_cat_e2
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 226
+        width: 70
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 30, y: 22.5}
+        - {x: -22, y: 22.5}
+        - {x: -35, y: 19.5}
+        - {x: -35, y: -17.5}
+        - {x: -31, y: -22.5}
+        - {x: 31, y: -22.5}
+        - {x: 34, y: -21.5}
+        - {x: 35, y: -18.5}
+        - {x: 35, y: 19.5}
+    - name: enemy_cat_h
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 175
+        width: 132
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -60, y: 50.5}
+        - {x: -66, y: 45.5}
+        - {x: -66, y: -44.5}
+        - {x: -63, y: -50.5}
+        - {x: 66, y: -50.5}
+        - {x: 66, y: 42.5}
+        - {x: 42, y: 50.5}
+    - name: enemy_cat_y1
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 162
+        width: 72
+        height: 55
+      alignment: 9
+      pivot: {x: 0.8374957, y: 0.16568857}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -57.29969, y: 45.88713}
+        - {x: -60.29969, y: 44.88713}
+        - {x: -60.29969, y: 7.8871307}
+        - {x: -57.29969, y: -9.112869}
+        - {x: 11.70031, y: -9.112869}
+        - {x: 11.70031, y: 33.88713}
+        - {x: 5.7003098, y: 45.88713}
+    - name: enemy_cat_h11
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 136
+        width: 44
+        height: 35
+      alignment: 9
+      pivot: {x: 0.72133577, y: 0.8340598}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6.2612305, y: 5.807907}
+        - {x: -28.73877, y: 5.807907}
+        - {x: -31.73877, y: 4.807907}
+        - {x: -31.73877, y: -26.192093}
+        - {x: -26.73877, y: -29.192093}
+        - {x: -4.7387695, y: -29.192093}
+        - {x: 11.26123, y: -22.192093}
+        - {x: 12.26123, y: -17.192093}
+        - {x: 12.26123, y: -0.1920929}
+    - name: enemy_cat_h12
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 128
+        width: 56
+        height: 46
+      alignment: 9
+      pivot: {x: 0.87319213, y: 0.41739655}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -48.898758, y: 26.799759}
+        - {x: -48.898758, y: -19.200241}
+        - {x: -18.898758, y: -19.200241}
+        - {x: -9.898758, y: -17.200241}
+        - {x: 7.101242, y: -9.200241}
+        - {x: 7.101242, y: 13.799759}
+        - {x: -30.898758, y: 26.799759}
+    - name: enemy_cat_t
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 7
+        width: 49
+        height: 165
+      alignment: 9
+      pivot: {x: 0.46507806, y: 0.048927862}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18.788818, y: 156.92691}
+        - {x: -22.788818, y: 147.92691}
+        - {x: -22.788818, y: 28.926903}
+        - {x: -15.788818, y: -1.0730972}
+        - {x: -7.7888184, y: -8.073097}
+        - {x: 10.211182, y: -8.073097}
+        - {x: 26.211182, y: 5.926903}
+        - {x: 26.211182, y: 156.92691}
+    - name: enemy_cat_y2
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 99
+        width: 65
+        height: 63
+      alignment: 9
+      pivot: {x: 0.13086422, y: 0.3584905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 56.493828, y: 40.4151}
+        - {x: 8.493826, y: 40.4151}
+        - {x: -8.506174, y: 35.4151}
+        - {x: -8.506174, y: -14.5849}
+        - {x: -5.506174, y: -21.5849}
+        - {x: -1.5061741, y: -22.5849}
+        - {x: 29.493826, y: -22.5849}
+        - {x: 36.493828, y: -17.5849}
+        - {x: 54.493828, y: 0.4151001}
+        - {x: 56.493828, y: 19.4151}
+    - name: enemy_cat_b
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 22
+        width: 154
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: 49.5}
+        - {x: -51, y: 46.5}
+        - {x: -77, y: 17.5}
+        - {x: -77, y: -19.5}
+        - {x: -67, y: -49.5}
+        - {x: 66, y: -49.5}
+        - {x: 76, y: -47.5}
+        - {x: 76, y: 23.5}
+        - {x: 27, y: 49.5}
+      - - {x: -74, y: 45.5}
+        - {x: -73, y: 49.5}
+        - {x: -77, y: 49.5}
+        - {x: -77, y: 44.5}
+    - name: enemy_cat_h2
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 44
+        height: 90
+      alignment: 9
+      pivot: {x: 0.76594394, y: 0.949273}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.701534, y: 4.5654297}
+        - {x: -22.701534, y: -14.43457}
+        - {x: -33.701534, y: -59.43457}
+        - {x: -33.701534, y: -85.43457}
+        - {x: 10.298466, y: -85.43457}
+        - {x: 10.298466, y: 4.5654297}
+    - name: enemy_cat_d
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 177
+        width: 41
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13.5, y: 18}
+        - {x: -18.5, y: 10}
+        - {x: -18.5, y: -15}
+        - {x: -12.5, y: -19}
+        - {x: 11.5, y: -19}
+        - {x: 19.5, y: -15}
+        - {x: 19.5, y: 7}
+        - {x: 15.5, y: 18}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

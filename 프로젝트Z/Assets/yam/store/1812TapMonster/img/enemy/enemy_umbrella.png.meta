@@ -1,0 +1,265 @@
+fileFormatVersion: 2
+guid: ba78fe949216aa9429723ae26ea91c34
+timeCreated: 1457678797
+licenseType: Store
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: enemy_umbrella_e1
+    21300002: enemy_umbrella_e2
+    21300004: enemy_umbrella_w3
+    21300006: enemy_umbrella_w1
+    21300008: enemy_umbrella_b
+    21300010: enemy_umbrella_w2
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: enemy_umbrella_e1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 247
+        width: 41
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+    - name: enemy_umbrella_e2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 267
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+        - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+      - - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+    - name: enemy_umbrella_w3
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 208
+        width: 116
+        height: 81
+      alignment: 9
+      pivot: {x: 0.044444356, y: 0.9251854}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5.155548, y: 6.0599976}
+        - {x: -5.155548, y: 0.05999756}
+        - {x: 55.84445, y: -74.94}
+        - {x: 110.84445, y: -74.94}
+        - {x: 110.84445, y: -25.940002}
+        - {x: 7.844452, y: 6.0599976}
+    - name: enemy_umbrella_w1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 147
+        width: 112
+        height: 92
+      alignment: 9
+      pivot: {x: 0.98071617, y: 0.9672365}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6.84021, y: 3.0142365}
+        - {x: -109.84021, y: -42.985764}
+        - {x: -109.84021, y: -56.985764}
+        - {x: -93.84021, y: -80.98576}
+        - {x: -47.84021, y: -88.98576}
+        - {x: -21.84021, y: -88.98576}
+        - {x: 2.15979, y: -11.985764}
+        - {x: 2.15979, y: 3.0142365}
+    - name: enemy_umbrella_b
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 0
+        width: 21
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+        - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+        - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+        - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+        - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+      - - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+        - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+        - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+        - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+      - - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+        - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+        - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+      - - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+        - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+      - - {x: -13.5, y: 19.5}
+        - {x: -20.5, y: 16.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 20.5, y: -19.5}
+        - {x: 20.5, y: 9.5}
+        - {x: 16.5, y: 19.5}
+    - name: enemy_umbrella_w2
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 40
+        width: 108
+        height: 103
+      alignment: 9
+      pivot: {x: 0.32502666, y: 0.962884}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -1.1028786, y: 3.822937}
+        - {x: -5.1028786, y: -4.177063}
+        - {x: -35.10288, y: -76.17706}
+        - {x: -35.10288, y: -99.17706}
+        - {x: 44.89712, y: -99.17706}
+        - {x: 72.897125, y: -89.17706}
+        - {x: 72.897125, y: -71.17706}
+        - {x: 4.8971214, y: 3.822937}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

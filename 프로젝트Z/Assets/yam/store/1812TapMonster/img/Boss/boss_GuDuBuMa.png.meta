@@ -1,0 +1,312 @@
+fileFormatVersion: 2
+guid: 77fda68404ae149489208d58e2e4bbff
+timeCreated: 1457676304
+licenseType: Store
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: boss_GuDuBuMa_e1
+    21300002: boss_GuDuBuMa_e2
+    21300004: boss_GuDuBuMa_e3
+    21300006: boss_GuDuBuMa_e4
+    21300008: boss_GuDuBuMa_h3
+    21300010: boss_GuDuBuMa_h1
+    21300012: boss_GuDuBuMa_h2
+    21300014: boss_GuDuBuMa_h4
+    21300016: boss_GuDuBuMa_n1
+    21300018: boss_GuDuBuMa_n2
+    21300020: boss_GuDuBuMa_n3
+    21300022: boss_GuDuBuMa_w1
+    21300024: boss_GuDuBuMa_14
+    21300026: boss_GuDuBuMa_b
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: boss_GuDuBuMa_e1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 214
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: boss_GuDuBuMa_e2
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 211
+        width: 63
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: boss_GuDuBuMa_e3
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 210
+        width: 57
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: boss_GuDuBuMa_e4
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 210
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: boss_GuDuBuMa_h3
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 164
+        width: 61
+        height: 78
+      alignment: 9
+      pivot: {x: 0.43983513, y: 0.22553006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4.829941, y: 60.40866}
+        - {x: -25.82994, y: 43.40866}
+        - {x: -26.82994, y: 37.40866}
+        - {x: -26.82994, y: 2.408661}
+        - {x: -11.829941, y: -17.59134}
+        - {x: 6.170059, y: -17.59134}
+        - {x: 34.17006, y: -6.591339}
+        - {x: 34.17006, y: 60.40866}
+    - name: boss_GuDuBuMa_h1
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 123
+        width: 73
+        height: 85
+      alignment: 9
+      pivot: {x: 0.61060554, y: 0.27489352}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.574203, y: 61.63405}
+        - {x: -44.574203, y: 32.63405}
+        - {x: -44.574203, y: -23.365952}
+        - {x: -16.574203, y: -23.365952}
+        - {x: 28.425797, y: -3.3659515}
+        - {x: 28.425797, y: 61.63405}
+      - - {x: 16.425797, y: -23.365952}
+        - {x: 15.4257965, y: -20.365952}
+        - {x: 7.4257965, y: -20.365952}
+        - {x: 6.4257965, y: -23.365952}
+    - name: boss_GuDuBuMa_h2
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 136
+        width: 64
+        height: 69
+      alignment: 9
+      pivot: {x: 0.52008456, y: 0.18413591}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 29.714584, y: 47.294617}
+        - {x: 16.714584, y: 56.294617}
+        - {x: -20.285416, y: 56.294617}
+        - {x: -33.285416, y: 45.294617}
+        - {x: -33.285416, y: -4.7053833}
+        - {x: -18.285416, y: -12.705383}
+        - {x: 20.714584, y: -12.705383}
+        - {x: 23.714584, y: -10.705383}
+        - {x: 30.714584, y: 5.2946167}
+        - {x: 30.714584, y: 44.294617}
+    - name: boss_GuDuBuMa_h4
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 79
+        width: 72
+        height: 84
+      alignment: 9
+      pivot: {x: 0.33175465, y: 0.2712032}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.886337, y: 61.218933}
+        - {x: -23.886337, y: 57.218933}
+        - {x: -23.886337, y: -7.781067}
+        - {x: 22.113663, y: -22.781067}
+        - {x: 48.113663, y: -22.781067}
+        - {x: 48.113663, y: 32.218933}
+        - {x: 22.113663, y: 61.218933}
+    - name: boss_GuDuBuMa_n1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 42
+        height: 123
+      alignment: 9
+      pivot: {x: 0.36648786, y: 0.113240846}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14.39249, y: -6.928623}
+        - {x: -15.39249, y: -7.928623}
+        - {x: -15.39249, y: -13.928623}
+        - {x: -9.39249, y: -13.928623}
+        - {x: -8.39249, y: -12.928623}
+        - {x: -8.39249, y: -8.928623}
+        - {x: -10.39249, y: -6.928623}
+      - - {x: -6.3924904, y: 109.07138}
+        - {x: -13.39249, y: 107.07138}
+        - {x: -13.39249, y: 20.071377}
+        - {x: -12.39249, y: -5.928623}
+        - {x: 23.60751, y: -5.928623}
+        - {x: 26.60751, y: 13.071377}
+        - {x: 26.60751, y: 107.07138}
+        - {x: 21.60751, y: 109.07138}
+    - name: boss_GuDuBuMa_n2
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 7
+        width: 33
+        height: 117
+      alignment: 9
+      pivot: {x: 0.83692145, y: 0.051308423}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.618408, y: 110.99692}
+        - {x: -27.618408, y: 59.996914}
+        - {x: -10.618408, y: -6.003086}
+        - {x: 5.381592, y: -6.003086}
+        - {x: 5.381592, y: 97.99692}
+        - {x: 0.3815918, y: 110.99692}
+    - name: boss_GuDuBuMa_n3
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 27
+        width: 34
+        height: 98
+      alignment: 9
+      pivot: {x: 0.51914334, y: 0.048621587}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14.650871, y: 93.235085}
+        - {x: -17.650871, y: 91.235085}
+        - {x: -17.650871, y: -4.7649155}
+        - {x: 11.349129, y: -4.7649155}
+        - {x: 16.349129, y: 19.235085}
+        - {x: 16.349129, y: 93.235085}
+    - name: boss_GuDuBuMa_w1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 89
+        width: 65
+        height: 43
+      alignment: 9
+      pivot: {x: 0.18413591, y: 0.48468512}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 23.031158, y: 22.158539}
+        - {x: -8.968842, y: 22.158539}
+        - {x: -11.968842, y: 21.158539}
+        - {x: -11.968842, y: -11.841461}
+        - {x: -2.9688416, y: -20.841461}
+        - {x: 28.031158, y: -20.841461}
+        - {x: 35.03116, y: -19.841461}
+        - {x: 53.03116, y: -8.841461}
+        - {x: 53.03116, y: 8.158539}
+        - {x: 49.03116, y: 10.158539}
+    - name: boss_GuDuBuMa_14
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 44
+        width: 52
+        height: 42
+      alignment: 9
+      pivot: {x: 0.8190546, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26.590836, y: 21}
+        - {x: -42.590836, y: 4}
+        - {x: -42.590836, y: -21}
+        - {x: 5.4091644, y: -21}
+        - {x: 9.409164, y: -14}
+        - {x: 9.409164, y: 17}
+        - {x: 0.40916443, y: 21}
+    - name: boss_GuDuBuMa_b
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 6
+        width: 70
+        height: 73
+      alignment: 9
+      pivot: {x: 0.4862853, y: 0.6793999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35.960022, y: 23.403809}
+        - {x: -34.039978, y: 23.403809}
+        - {x: -34.039978, y: -45.59619}
+        - {x: -32.039978, y: -49.59619}
+        - {x: -3.039978, y: -49.59619}
+        - {x: -1.039978, y: -41.59619}
+        - {x: 8.960022, y: -49.59619}
+        - {x: 35.960022, y: -49.59619}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

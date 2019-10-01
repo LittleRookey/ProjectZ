@@ -8,13 +8,14 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Enemy enemy;
 
+    [SerializeField]
+    private Text playerLevelText;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public void UpdatePlayerLevel()
     {
-        
+        playerLevelText.text = PlayerController.Instance.GetLevel().ToString();
     }
-
     //public void UpdateEnemyHP()
     //{
     //    enemy = GameController.gameControl.enemy;

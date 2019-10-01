@@ -55,8 +55,8 @@ public class HealthController : MonoBehaviour
             enemy[i].health = currentHealths[i];
             enemy[i].healthText = HPTexts[i];
 
-            enemy[i].healthText.text = enemy[i].getCurrentHP().ToString() + " / " 
-                + enemy[i].getMaxHP().ToString();
+            //enemy[i].healthText.text = enemy[i].getCurrentHP().ToString() + " / " 
+            //    + enemy[i].getMaxHP().ToString();
         }
     }
     

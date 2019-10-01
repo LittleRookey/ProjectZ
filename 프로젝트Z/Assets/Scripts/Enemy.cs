@@ -38,7 +38,7 @@ public class Enemy : Character
     //    enemyStatus = eEnemyStatus.Idle;
     //}
 
-    public void Init(int hp, int attk, int def, int m_dropGold, int m_dropExp)
+    public void Init(float hp, float attk, float def, int m_dropGold, int m_dropExp)
     {
         maxHP = hp;
         currentHP = maxHP;
@@ -76,6 +76,11 @@ public class Enemy : Character
     public override bool IsPlayer()
     {
         return false;
+    }
+
+    public void LoseOneHP()
+    {
+        currentHP--;
     }
 
     private void Awake()

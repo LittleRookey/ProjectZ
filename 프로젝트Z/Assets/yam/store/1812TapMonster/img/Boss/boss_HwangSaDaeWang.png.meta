@@ -1,0 +1,214 @@
+fileFormatVersion: 2
+guid: 988b73551fae1984a96612fa70d0ec4e
+timeCreated: 1452667653
+licenseType: Store
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: boss_HwangSaDaeWang_h
+    21300002: boss_HwangSaDaeWang_1
+    21300004: boss_HwangSaDaeWang_f
+    21300006: boss_HwangSaDaeWang_m
+    21300008: boss_HwangSaDaeWang_p
+    21300010: boss_HwangSaDaeWang_b
+    21300012: boss_HwangSaDaeWang_e
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: boss_HwangSaDaeWang_h
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 117
+        width: 210
+        height: 190
+      alignment: 9
+      pivot: {x: 0.47834215, y: 0.14625517}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 48.54815, y: -25.788483}
+        - {x: 50.54815, y: -27.788483}
+        - {x: 55.54815, y: -27.788483}
+        - {x: 55.54815, y: -25.788483}
+        - {x: 54.54815, y: -23.788483}
+        - {x: 50.54815, y: -22.788483}
+      - - {x: 62.54815, y: 120.21152}
+        - {x: 50.54815, y: 113.21152}
+        - {x: 63.54815, y: 145.21152}
+        - {x: 109.54815, y: 140.21152}
+        - {x: 109.54815, y: 162.21152}
+        - {x: -100.45185, y: 162.21152}
+        - {x: -100.45185, y: 140.21152}
+        - {x: -97.45185, y: 140.21152}
+        - {x: -94.45185, y: 65.21152}
+        - {x: -88.45185, y: 12.211517}
+        - {x: -73.45185, y: -27.788483}
+        - {x: 78.54815, y: -27.788483}
+        - {x: 109.54815, y: -13.788483}
+        - {x: 109.54815, y: 77.21152}
+        - {x: 102.54815, y: 137.21152}
+      - - {x: 106.54815, y: 25.211517}
+        - {x: 108.54815, y: 23.211517}
+        - {x: 109.54815, y: 23.211517}
+        - {x: 109.54815, y: 31.211517}
+        - {x: 106.54815, y: 30.211517}
+    - name: boss_HwangSaDaeWang_1
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 225
+        width: 46
+        height: 68
+      alignment: 9
+      pivot: {x: 0.96597093, y: 0.9483059}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.434662, y: 3.5151978}
+        - {x: -44.43466, y: -30.484802}
+        - {x: -44.43466, y: -64.4848}
+        - {x: -18.434662, y: -64.4848}
+        - {x: 1.5653381, y: -48.484802}
+        - {x: 1.5653381, y: 3.5151978}
+    - name: boss_HwangSaDaeWang_f
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 141
+        width: 83
+        height: 55
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8204371}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41.5, y: 9.875961}
+        - {x: -41.5, y: -29.124039}
+        - {x: -35.5, y: -44.12404}
+        - {x: -25.5, y: -45.12404}
+        - {x: 40.5, y: -45.12404}
+        - {x: 41.5, y: -39.12404}
+        - {x: 41.5, y: 5.8759613}
+        - {x: 39.5, y: 9.875961}
+    - name: boss_HwangSaDaeWang_m
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 70
+        width: 53
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5286047, y: 0.7411898}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18.016048, y: 11.38765}
+        - {x: -28.016048, y: 7.3876495}
+        - {x: -28.016048, y: -28.61235}
+        - {x: -24.016048, y: -32.61235}
+        - {x: 22.983952, y: -32.61235}
+        - {x: 24.983952, y: -29.61235}
+        - {x: 24.983952, y: 11.38765}
+    - name: boss_HwangSaDaeWang_p
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 46
+        width: 43
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.5, y: 34.5}
+        - {x: -21.5, y: -19.5}
+        - {x: -5.5, y: -34.5}
+        - {x: 6.5, y: -34.5}
+        - {x: 21.5, y: -21.5}
+        - {x: 21.5, y: 34.5}
+    - name: boss_HwangSaDaeWang_b
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 41
+        width: 149
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 74.5, y: 33}
+        - {x: 72.5, y: 35}
+        - {x: -62.5, y: 35}
+        - {x: -74.5, y: 27}
+        - {x: -74.5, y: -4}
+        - {x: -68.5, y: -12}
+        - {x: -61.5, y: -14}
+        - {x: -21.5, y: -34}
+        - {x: -15.5, y: -35}
+        - {x: 9.5, y: -35}
+        - {x: 13.5, y: -34}
+        - {x: 21.5, y: -31}
+        - {x: 74.5, y: -8}
+    - name: boss_HwangSaDaeWang_e
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 10
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.5, y: 21.5}
+        - {x: -20.5, y: 17.5}
+        - {x: -20.5, y: -18.5}
+        - {x: -17.5, y: -21.5}
+        - {x: 20.5, y: -21.5}
+        - {x: 20.5, y: 15.5}
+        - {x: 10.5, y: 21.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

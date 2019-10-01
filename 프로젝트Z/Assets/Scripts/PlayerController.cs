@@ -19,9 +19,15 @@ public class PlayerController : Character
     [SerializeField]
     private int level;
     [SerializeField]
-    private int maxExp;
+    private float maxExp;
     [SerializeField]
-    private int currentExp;
+    private float currentExp;
+
+    [SerializeField]
+    private UIController uiControl;
+
+    [SerializeField]
+    private ExpManager expManager;
 
     public Health health;
 
@@ -72,14 +78,17 @@ public class PlayerController : Character
         if(currentExp + enemy.getDropExp() >= maxExp)
         {
             // TODO player level up
-            int remainExp = enemy.getDropExp() + currentExp - maxExp;
+            float remainExp = enemy.getDropExp() + currentExp - maxExp;
 
             LevelUp();
             currentExp += remainExp;
+            expManager.UpdateExp(0f , currentExp, maxExp);
         } else
         {
             currentExp += enemy.getDropExp();
+            expManager.UpdateExp(currentExp - enemy.getDropExp(), currentExp, maxExp);
         }
+
         
     }
 
@@ -87,6 +96,7 @@ public class PlayerController : Character
     {
         level++;
         // TODO text popup
+        uiControl.UpdatePlayerLevel();
         maxHP += (int)(Mathf.Log(level, 2) + 1);
         attack += (int)(Mathf.Log(level, 2) + 1);
         defense += (int)(Mathf.Log(level, 2) + 1);
@@ -108,6 +118,21 @@ public class PlayerController : Character
     public int GetLevel()
     {
         return level;
+    }
+
+    public float GetCurrentExp()
+    {
+        return currentExp;
+    }
+
+    public float GetMaxExp()
+    {
+        return maxExp;
+    }
+
+    public void AddExp(float add)
+    {
+        currentExp += add;
     }
 
 }

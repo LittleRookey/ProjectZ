@@ -404,15 +404,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   char_name: 
-  currentHP: 100
-  maxHP: 100
-  attack: 15
-  defense: 5
+  currentHP: 200
+  maxHP: 200
+  attack: 3
+  defense: 3
   isAlive: 1
   anim: {fileID: 0}
   health: {fileID: 0}
+  healthText: {fileID: 0}
   forwardNumber: 5
   enemyStatus: 1
+  isTank: 0
+  isDPS: 0
 --- !u!1 &1000012009916770
 GameObject:
   m_ObjectHideFlags: 0

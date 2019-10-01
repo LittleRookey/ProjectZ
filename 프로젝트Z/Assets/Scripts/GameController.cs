@@ -140,12 +140,12 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < num; ++i)
         {
             Enemy clone = Instantiate(enemies[Random.Range(0, enemies.Count)]);
-            clone.Init((int)((playerLevel + .5 * gameStage) * 100), 
-                (int)((playerLevel + .5 * gameStage) * 10),
-                (int)((playerLevel + .5 * gameStage) * 5),
-                (int)((playerLevel + .5 * gameStage) * ((playerLevel + .5 * gameStage) * 10 + (playerLevel + .5 * gameStage) * 5)/2),
-                (int)(1 * (playerLevel + (gameStage * 1.5)))
-                );
+            //clone.Init((int)((playerLevel + .5 * gameStage) * 100), 
+            //    (int)((playerLevel + .5 * gameStage) * 10),
+            //    (int)((playerLevel + .5 * gameStage) * 5),
+            //    (int)((playerLevel + .5 * gameStage) * ((playerLevel + .5 * gameStage) * 10 + (playerLevel + .5 * gameStage) * 5)/2),
+            //    (int)(1 * (playerLevel + (gameStage * 1.5)))
+            //    );
             currentEnemy.Add(clone);
             enemySpawnedNumber++;
         }
