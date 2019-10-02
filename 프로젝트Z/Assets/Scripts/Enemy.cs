@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public enum eEnemyStatus
 {
-    dead, Idle
+    dead, Idle, Attack
 };
 
 public class Enemy : Character
@@ -29,14 +29,8 @@ public class Enemy : Character
     [SerializeField]
     private bool isDPS;
 
-    //public Enemy(string e_name, int forwardNum, int e_hp, int e_attk, int e_def, int m_dropGold, int m_dropExp)  
-    //    :base(e_name, e_hp, e_attk, e_def)
-    //{
-    //    forwardNumber = forwardNum;
-    //    dropGold = m_dropGold;
-    //    dropExp = m_dropExp;
-    //    enemyStatus = eEnemyStatus.Idle;
-    //}
+    //[SerializeField]
+    //private List<Skill> skills;
 
     public void Init(float hp, float attk, float def, int m_dropGold, int m_dropExp)
     {
@@ -107,6 +101,10 @@ public class Enemy : Character
                     // fade in
                     anim.SetBool("isIdle", true);
                     break;
+                case eEnemyStatus.Attack:
+                    // constantly attacks player
+                    anim.SetBool("isAttack", true);
+                    break;
                 case eEnemyStatus.dead:
                     anim.SetBool("isDead", true);
                     //fade away
@@ -116,6 +114,15 @@ public class Enemy : Character
             }
             yield return new WaitForSeconds(.5f);
         }
+    }
+
+    private IEnumerator AttackPlayer(PlayerController player)
+    {
+        // appear aura
+
+        yield return new WaitForSeconds(2f);
+        Attack(player);
+
     }
 
     

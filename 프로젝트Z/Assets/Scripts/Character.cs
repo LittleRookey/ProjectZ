@@ -38,7 +38,7 @@ public abstract class Character : MonoBehaviour
             PlayerController temp = ((PlayerController)target);
             temp.LoseHealth(attack);
             Debug.Log("Player lost hp");
-            //temp.health.ShowHPAnimation(temp.getCurrentHP(), temp.getMaxHP(), attack);
+            temp.health.ShowHP(temp.getCurrentHP(), temp.getMaxHP());
             // if dead gameover
             if (temp.isDead())
             {
