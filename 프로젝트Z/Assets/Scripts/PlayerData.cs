@@ -8,13 +8,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 [Serializable]
 public class PlayerData 
 {
-    public string char_name;
-    public float currentHP;
-    public float maxHP;
-    public float attack;
-    public float defense;
+    //public string char_name;
+    //public float currentHP;
+    //public float maxHP;
+    //public float attack;
+    //public float defense;
 
-    public PlayerController player;
+    //public PlayerController player;
     // Start is called before the first frame update
     void Start()
     {

@@ -5294,6 +5294,8 @@ MonoBehaviour:
   health: {fileID: 0}
   healthText: {fileID: 0}
   forwardNumber: 0
+  dropGold: 5
+  dropExp: 1
   enemyStatus: 0
   isTank: 0
   isDPS: 0

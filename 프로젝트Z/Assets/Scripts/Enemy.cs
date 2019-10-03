@@ -17,8 +17,9 @@ public class Enemy : Character
 
     [SerializeField]
     private int forwardNumber; // bigger the forward number is, enemy will stand at the front line
-
+    [SerializeField]
     private int dropGold;
+    [SerializeField]
     private int dropExp;
     public eEnemyStatus enemyStatus;
     private static float ONE_BASE_HP = 100;

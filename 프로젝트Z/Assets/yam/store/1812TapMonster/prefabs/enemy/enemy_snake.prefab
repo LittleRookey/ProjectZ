@@ -187,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 119022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.78046, y: -9.475033, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 420312}
   m_Father: {fileID: 0}
@@ -362,6 +362,7 @@ GameObject:
   - component: {fileID: 420312}
   - component: {fileID: 9554832}
   - component: {fileID: 6168166}
+  - component: {fileID: 8583133833795710950}
   m_Layer: 8
   m_Name: enemy_snake
   m_TagString: Enemy
@@ -433,6 +434,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7089443, y: 2.9419804}
   m_EdgeRadius: 0
+--- !u!114 &8583133833795710950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797ca35a33fcace42a373c39b47574f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  char_name: "\uC904\uBB34\uB2AC\uBC40"
+  currentHP: 95
+  maxHP: 95
+  attack: 15
+  defense: 3
+  isAlive: 0
+  anim: {fileID: 0}
+  health: {fileID: 0}
+  healthText: {fileID: 0}
+  forwardNumber: 60
+  enemyStatus: 0
+  isTank: 0
+  isDPS: 0
 --- !u!1 &157202
 GameObject:
   m_ObjectHideFlags: 0
