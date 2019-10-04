@@ -5193,6 +5193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 404412}
+  - component: {fileID: 4164650105356998890}
   m_Layer: 8
   m_Name: enemy_jar
   m_TagString: Enemy
@@ -5215,6 +5216,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4164650105356998890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797ca35a33fcace42a373c39b47574f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  char_name: "\uC8FC\uC804\uCC28"
+  currentHP: 100
+  maxHP: 100
+  attack: 10
+  defense: 4
+  isAlive: 0
+  anim: {fileID: 0}
+  health: {fileID: 0}
+  healthText: {fileID: 0}
+  forwardNumber: 5
+  dropGold: 5
+  dropExp: 2
+  enemyStatus: 0
+  isTank: 0
+  isDPS: 0
 --- !u!1 &197298
 GameObject:
   m_ObjectHideFlags: 0
@@ -5226,7 +5254,6 @@ GameObject:
   - component: {fileID: 436004}
   - component: {fileID: 9519142}
   - component: {fileID: 6127514}
-  - component: {fileID: 1353650206732828954}
   m_Layer: 8
   m_Name: enemy_jar
   m_TagString: Enemy
@@ -5300,30 +5327,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.973052, y: 3.6100206}
   m_EdgeRadius: 0
---- !u!114 &1353650206732828954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797ca35a33fcace42a373c39b47574f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  char_name: "\uC8FC\uC804\uCC28"
-  currentHP: 100
-  maxHP: 100
-  attack: 10
-  defense: 4
-  isAlive: 0
-  anim: {fileID: 0}
-  health: {fileID: 0}
-  healthText: {fileID: 0}
-  forwardNumber: 5
-  dropGold: 0
-  dropExp: 0
-  enemyStatus: 0
-  isTank: 0
-  isDPS: 0

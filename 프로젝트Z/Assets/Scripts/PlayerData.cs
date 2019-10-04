@@ -8,22 +8,27 @@ using System.Runtime.Serialization.Formatters.Binary;
 [Serializable]
 public class PlayerData 
 {
-    //public string char_name;
-    //public float currentHP;
-    //public float maxHP;
-    //public float attack;
-    //public float defense;
+    // PlayerController
+    public string player_name;
+    public float player_currentHP;
+    public float player_maxHP;
+    public float player_attack;
+    public float player_defense;
+    public int player_gold;
+    public int player_level;
+    public float player_maxExp;
+    public float player_currentExp;
+    public List<Item> player_Inventory;
+    public Health health;
 
-    //public PlayerController player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // GameController
+    public int stage;
+    public List<Enemy> currentEnemy;
+    public int enemySpawnedThisRound;
+
+
+    // Enemy
+    
+
 }

@@ -90,7 +90,6 @@ GameObject:
   - component: {fileID: 423430}
   - component: {fileID: 9527800}
   - component: {fileID: 6181012}
-  - component: {fileID: 1571911367544086532}
   m_Layer: 8
   m_Name: enemy_Acorn
   m_TagString: Enemy
@@ -161,33 +160,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3625034, y: 1.797507}
   m_EdgeRadius: 0
---- !u!114 &1571911367544086532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797ca35a33fcace42a373c39b47574f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  char_name: "\uC544\uCF58"
-  currentHP: 50
-  maxHP: 50
-  attack: 7
-  defense: 1
-  isAlive: 1
-  anim: {fileID: 0}
-  health: {fileID: 0}
-  healthText: {fileID: 0}
-  forwardNumber: 5
-  dropGold: 5
-  dropExp: 1
-  enemyStatus: 1
-  isTank: 0
-  isDPS: 0
 --- !u!1 &173724
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 414748}
+  - component: {fileID: 1620794221888825835}
   m_Layer: 8
   m_Name: enemy_Acorn
   m_TagString: Enemy
@@ -213,12 +186,39 @@ Transform:
   m_GameObject: {fileID: 173724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.214683, y: 0.76659775, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 423430}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1620794221888825835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797ca35a33fcace42a373c39b47574f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  char_name: "\uC544\uCF58"
+  currentHP: 50
+  maxHP: 50
+  attack: 7
+  defense: 1
+  isAlive: 0
+  anim: {fileID: 0}
+  health: {fileID: 0}
+  healthText: {fileID: 0}
+  forwardNumber: 5
+  dropGold: 5
+  dropExp: 1
+  enemyStatus: 0
+  isTank: 0
+  isDPS: 0
 --- !u!1 &178924
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &479638
 Transform:
   m_ObjectHideFlags: 0
@@ -5112,7 +5112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &412174
 Transform:
   m_ObjectHideFlags: 0

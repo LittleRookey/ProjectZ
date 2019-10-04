@@ -4989,7 +4989,6 @@ GameObject:
   - component: {fileID: 498808}
   - component: {fileID: 9527076}
   - component: {fileID: 6192246}
-  - component: {fileID: 6435826057143029827}
   m_Layer: 8
   m_Name: enemy_kettle
   m_TagString: Enemy
@@ -5062,31 +5061,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.7767925, y: 1.5903629}
   m_EdgeRadius: 0
---- !u!114 &6435826057143029827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797ca35a33fcace42a373c39b47574f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  char_name: "\uC8FC\uC804\uC790"
-  currentHP: 80
-  maxHP: 80
-  attack: 25
-  defense: 1
-  isAlive: 0
-  anim: {fileID: 0}
-  health: {fileID: 0}
-  healthText: {fileID: 0}
-  forwardNumber: 7
-  enemyStatus: 1
-  isTank: 0
-  isDPS: 0
 --- !u!1 &186476
 GameObject:
   m_ObjectHideFlags: 0
@@ -5096,6 +5070,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 475518}
+  - component: {fileID: 4453226436761070458}
   m_Layer: 8
   m_Name: enemy_kettle
   m_TagString: Enemy
@@ -5112,12 +5087,39 @@ Transform:
   m_GameObject: {fileID: 186476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.38976225, y: -5.2544184, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 498808}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4453226436761070458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797ca35a33fcace42a373c39b47574f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  char_name: "\uC8FC\uC804\uCC28"
+  currentHP: 80
+  maxHP: 80
+  attack: 25
+  defense: 1
+  isAlive: 0
+  anim: {fileID: 0}
+  health: {fileID: 0}
+  healthText: {fileID: 0}
+  forwardNumber: 7
+  dropGold: 5
+  dropExp: 3
+  enemyStatus: 0
+  isTank: 0
+  isDPS: 0
 --- !u!1 &189782
 GameObject:
   m_ObjectHideFlags: 0

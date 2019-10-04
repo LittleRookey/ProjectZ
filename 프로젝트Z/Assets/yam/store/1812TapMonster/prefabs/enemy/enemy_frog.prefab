@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &445886
 Transform:
   m_ObjectHideFlags: 0
@@ -282,7 +282,7 @@ ParticleSystem:
         m_RotationOrder: 0
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -335,7 +335,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -388,7 +388,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -441,7 +441,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -5520,7 +5520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &478786
 Transform:
   m_ObjectHideFlags: 0
@@ -5594,7 +5594,6 @@ GameObject:
   - component: {fileID: 480936}
   - component: {fileID: 9513654}
   - component: {fileID: 6157498}
-  - component: {fileID: 3741960247185084499}
   m_Layer: 8
   m_Name: enemy_frog
   m_TagString: Enemy
@@ -5666,31 +5665,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3671536, y: 3.0973382}
   m_EdgeRadius: 0
---- !u!114 &3741960247185084499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797ca35a33fcace42a373c39b47574f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  char_name: "\uC78E\uAC1C\uAD6C\uB9AC"
-  currentHP: 0
-  maxHP: 0
-  attack: 0
-  defense: 0
-  isAlive: 0
-  anim: {fileID: 0}
-  health: {fileID: 0}
-  healthText: {fileID: 0}
-  forwardNumber: 0
-  enemyStatus: 0
-  isTank: 0
-  isDPS: 0
 --- !u!1 &183706
 GameObject:
   m_ObjectHideFlags: 0
@@ -5783,6 +5757,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 483112}
+  - component: {fileID: 2591609061262558960}
   m_Layer: 8
   m_Name: enemy_frog
   m_TagString: Enemy
@@ -5799,9 +5774,36 @@ Transform:
   m_GameObject: {fileID: 197302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.952413, y: 0.41242027, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 480936}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2591609061262558960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797ca35a33fcace42a373c39b47574f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  char_name: "\uC78E\uAC1C\uAD6C\uB9AC"
+  currentHP: 100
+  maxHP: 100
+  attack: 14
+  defense: 4
+  isAlive: 0
+  anim: {fileID: 0}
+  health: {fileID: 0}
+  healthText: {fileID: 0}
+  forwardNumber: 3
+  dropGold: 5
+  dropExp: 2
+  enemyStatus: 0
+  isTank: 0
+  isDPS: 0

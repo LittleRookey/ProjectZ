@@ -175,7 +175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &429736
 Transform:
   m_ObjectHideFlags: 0
@@ -440,7 +440,7 @@ ParticleSystem:
         m_RotationOrder: 0
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -493,7 +493,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -546,7 +546,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -599,7 +599,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -5200,7 +5200,6 @@ GameObject:
   - component: {fileID: 405644}
   - component: {fileID: 9533856}
   - component: {fileID: 6158368}
-  - component: {fileID: 3244074013139250057}
   m_Layer: 8
   m_Name: enemy_cat
   m_TagString: Enemy
@@ -5272,33 +5271,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.2206736, y: 1.7435017}
   m_EdgeRadius: 0
---- !u!114 &3244074013139250057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797ca35a33fcace42a373c39b47574f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  char_name: 
-  currentHP: 75
-  maxHP: 75
-  attack: 14
-  defense: 2
-  isAlive: 1
-  anim: {fileID: 0}
-  health: {fileID: 0}
-  healthText: {fileID: 0}
-  forwardNumber: 0
-  dropGold: 5
-  dropExp: 1
-  enemyStatus: 0
-  isTank: 0
-  isDPS: 0
 --- !u!1 &157782
 GameObject:
   m_ObjectHideFlags: 0
@@ -5387,6 +5359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 451426}
+  - component: {fileID: 8802175181884843710}
   m_Layer: 8
   m_Name: enemy_cat
   m_TagString: Enemy
@@ -5403,12 +5376,39 @@ Transform:
   m_GameObject: {fileID: 161296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.6103764, y: 0.32387543, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.5}
   m_Children:
   - {fileID: 405644}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8802175181884843710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797ca35a33fcace42a373c39b47574f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  char_name: "\uC678\uB208\uACE0\uC591\uC774"
+  currentHP: 75
+  maxHP: 75
+  attack: 14
+  defense: 2
+  isAlive: 0
+  anim: {fileID: 0}
+  health: {fileID: 0}
+  healthText: {fileID: 0}
+  forwardNumber: 11
+  dropGold: 5
+  dropExp: 1
+  enemyStatus: 0
+  isTank: 0
+  isDPS: 0
 --- !u!1 &163692
 GameObject:
   m_ObjectHideFlags: 0
@@ -5904,7 +5904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &453424
 Transform:
   m_ObjectHideFlags: 0

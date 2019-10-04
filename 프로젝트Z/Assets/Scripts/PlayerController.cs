@@ -32,16 +32,6 @@ public class PlayerController : Character
     public Health health;
 
     private List<Item> p_inventory;
-    
-    //public PlayerController(string p_name, int p_hp, int p_attk, int p_def) 
-    //    : base(p_name, p_hp, p_attk, p_def)
-    //{
-    //    level = 1;
-    //    m_gold = 0;
-    //    currentExp = 0;
-    //    maxExp = (int)(10 * (Mathf.Log(level, 2)  + 1));
-    //    p_inventory = new List<Item>();
-    //}
 
     private void Awake()
     {
@@ -56,7 +46,7 @@ public class PlayerController : Character
     }
     private void Start()
     {
-        Init("player", 10, 5, 0);
+        Init("player", 100, 25, 0);
     }
 
     public void Init(string p_name, int p_hp, int p_attk, int p_def)
@@ -82,11 +72,11 @@ public class PlayerController : Character
 
             LevelUp();
             currentExp += remainExp;
-            expManager.UpdateExp(0f , currentExp, maxExp);
+            expManager.UpdateExp(currentExp, maxExp);
         } else
         {
             currentExp += enemy.getDropExp();
-            expManager.UpdateExp(currentExp - enemy.getDropExp(), currentExp, maxExp);
+            expManager.UpdateExp(currentExp, maxExp);
         }
 
         
@@ -97,9 +87,10 @@ public class PlayerController : Character
         level++;
         // TODO text popup
         uiControl.UpdatePlayerLevel();
-        maxHP += (int)(Mathf.Log(level, 2) + 1);
-        attack += (int)(Mathf.Log(level, 2) + 1);
-        defense += (int)(Mathf.Log(level, 2) + 1);
+        
+        maxHP += (int)(Mathf.Pow(2, (float)(level * .03) + 1));
+        attack += (int)(Mathf.Pow(2, (float)(level * .03) + 1));
+        defense += (int)(Mathf.Pow(2, (float)(level * .03) + 1));
         currentHP = maxHP;
 
         currentExp = 0;

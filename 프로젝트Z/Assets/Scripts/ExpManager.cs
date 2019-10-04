@@ -13,10 +13,10 @@ public class ExpManager : MonoBehaviour
         playerExp.fillAmount = PlayerController.Instance.GetCurrentExp() / PlayerController.Instance.GetMaxExp();
     }
 
-    public void UpdateExp(float prevExp, float currentExp, float maxExp)
+    public void UpdateExp(float currentExp, float maxExp)
     {
         //playerExp.fillAmount = currentExp / maxExp;
-        StartCoroutine(AnimateExp(prevExp, currentExp, maxExp));
+        playerExp.fillAmount = currentExp / maxExp;
     }
 
     public IEnumerator AnimateExp(float prevExp, float nextExp, float maxExp)

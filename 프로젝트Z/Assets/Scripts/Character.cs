@@ -47,7 +47,6 @@ public abstract class Character : MonoBehaviour
         }
         else if(target.IsEnemy())
         {
-
             Enemy temp = ((Enemy)target);
 
             
@@ -60,9 +59,8 @@ public abstract class Character : MonoBehaviour
             // if dead
             if (temp.isDead())
             {
-                
-                temp.anim.SetBool("isIdle", false);
-                temp.anim.SetBool("isDead", true);
+
+                temp.anim.SetTrigger("dead");
 
                 PlayerController.Instance.GainGoldAndExp(temp);
 

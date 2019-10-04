@@ -17,7 +17,8 @@ public class GameController : MonoBehaviour
     }
 
     [SerializeField]
-    private int gameStage = 1;
+    private PlayerData save; 
+
 
     [SerializeField]
     private HealthController healthControl;
@@ -30,8 +31,6 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     public List<Enemy> currentEnemy;
-
-    private Enemy prevEnemy;
 
     public bool enemyIsDead;
 
@@ -220,6 +219,10 @@ public class GameController : MonoBehaviour
         toggleOn = true;
     }
 
+    public int GetState()
+    {
+        return save.stage;
+    }
     // Start is called before the first frame update
     void Start()
     {

@@ -80,7 +80,7 @@ public class Enemy : Character
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         
     }
 
@@ -89,6 +89,7 @@ public class Enemy : Character
     {
         //StartCoroutine(Action());
         enemyStatus = eEnemyStatus.Idle;
+        isAlive = true;
     }
 
     
@@ -100,14 +101,14 @@ public class Enemy : Character
             {
                 case eEnemyStatus.Idle:
                     // fade in
-                    anim.SetBool("isIdle", true);
+                    
                     break;
                 case eEnemyStatus.Attack:
                     // constantly attacks player
-                    anim.SetBool("isAttack", true);
+                    anim.SetTrigger("attack");
                     break;
                 case eEnemyStatus.dead:
-                    anim.SetBool("isDead", true);
+                    anim.SetTrigger("dead");
                     //fade away
                     break;
                 default:
