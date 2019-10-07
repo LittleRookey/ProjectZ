@@ -117,7 +117,7 @@ public class TouchManager : MonoBehaviour
                     Debug.Log("Click");
                     // effect instantiate
                     
-                    player.Attack(GameController.Instance.currentEnemy[0]);
+                    player.Attack(GameController.Instance.GetPlayerData().game_currentEnemy[0]);
                     
                 }
             }

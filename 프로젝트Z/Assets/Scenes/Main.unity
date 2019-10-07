@@ -358,7 +358,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c650fd1c08c5543b5e54e520c4c3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStage: 1
+  playerData:
+    player_name: 
+    player_currentHP: 0
+    player_maxHP: 0
+    player_attack: 0
+    player_defense: 0
+    player_gold: 0
+    player_level: 0
+    player_maxExp: 0
+    player_currentExp: 0
+    game_stage: 0
+    game_currentEnemy: []
+    game_enemySpawnedThisRound: 0
   healthControl: {fileID: 211707041}
   enemyPool: {fileID: 0}
   enemies:
@@ -381,6 +393,7 @@ MonoBehaviour:
   toggleOn: 0
   enemySpawnedNumber: 0
   enemyDeadNum: 0
+  stage: 0
   enemySpawnedThisRound: 3
   enemySpawnPos:
   - {fileID: 679584014}
@@ -399,6 +412,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &231771074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 231771076}
+  - component: {fileID: 231771075}
+  m_Layer: 0
+  m_Name: SaveClass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &231771075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231771074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae69a97980398f4b899107ffd921ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData:
+    player_name: 
+    player_currentHP: 0
+    player_maxHP: 0
+    player_attack: 0
+    player_defense: 0
+    player_gold: 0
+    player_level: 0
+    player_maxExp: 0
+    player_currentExp: 0
+    game_stage: 0
+    game_currentEnemy: []
+    game_enemySpawnedThisRound: 0
+--- !u!4 &231771076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231771074}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &393695418
 GameObject:
@@ -705,6 +774,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1078780818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1078780820}
+  - component: {fileID: 1078780819}
+  m_Layer: 0
+  m_Name: EnemyPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1078780819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078780818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c7953d26f49b94c8290513ee4f60aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: {fileID: 0}
+--- !u!4 &1078780820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078780818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.050159246, y: 1.2063301, z: -2.066269}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1128612056
 GameObject:

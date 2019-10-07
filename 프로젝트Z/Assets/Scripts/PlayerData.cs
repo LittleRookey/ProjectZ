@@ -18,14 +18,13 @@ public class PlayerData
     public int player_level;
     public float player_maxExp;
     public float player_currentExp;
-    public List<Item> player_Inventory;
-    public Health health;
+    //public List<Item> player_Inventory;
 
 
     // GameController
-    public int stage;
-    public List<Enemy> currentEnemy;
-    public int enemySpawnedThisRound;
+    public int game_stage;
+    public List<Enemy> game_currentEnemy;
+    public int game_enemySpawnedThisRound;
 
 
     // Enemy

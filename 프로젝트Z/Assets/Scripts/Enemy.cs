@@ -14,9 +14,19 @@ public class Enemy : Character
 
     public Health health;
     public Text healthText;
-
+    [SerializeField]
+    private string char_name;
+    [SerializeField]
+    private float currentHP;
+    [SerializeField]
+    private float maxHP;
+    [SerializeField]
+    private float attack;
+    [SerializeField]
+    private float defense;
     [SerializeField]
     private int forwardNumber; // bigger the forward number is, enemy will stand at the front line
+    public bool isAlive;
     [SerializeField]
     private int dropGold;
     [SerializeField]
@@ -42,7 +52,21 @@ public class Enemy : Character
         dropGold = m_dropGold;
         dropExp = m_dropExp;
     }
+    // damage received
+    public float CalculateDamage(float atk)
+    {
+        return atk - defense;
 
+    }
+
+    public void LoseHealth(float atk)
+    {
+        if (atk <= 0)
+        {
+            return;
+        }
+        currentHP -= atk;
+    }
     public int getDropGold()
     {
         return dropGold;
@@ -71,6 +95,31 @@ public class Enemy : Character
     public override bool IsPlayer()
     {
         return false;
+    }
+
+    public string getName()
+    {
+        return char_name;
+    }
+
+    public float getMaxHP()
+    {
+        return maxHP;
+    }
+
+    public float getCurrentHP()
+    {
+        return currentHP;
+    }
+
+    public float getAttack()
+    {
+        return attack;
+    }
+
+    public float getDefense()
+    {
+        return defense;
     }
 
     public void LoseOneHP()
@@ -126,6 +175,6 @@ public class Enemy : Character
         Attack(player);
 
     }
-
+    
     
 }
