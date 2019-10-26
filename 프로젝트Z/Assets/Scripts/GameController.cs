@@ -17,22 +17,31 @@ public class GameController : MonoBehaviour
     }
 
     [SerializeField]
-    private PlayerData playerData; 
-
+    private PlayerData playerData;
 
     [SerializeField]
     private HealthController healthControl;
 
     [SerializeField]
+    private ExpManager expManager;
+
+    [SerializeField]
     private EnemyPool enemyPool;
+
+    [SerializeField]
+    private BossPool bossPool;
 
     // enemies that can be spawned
     public List<Enemy> enemies;
 
+    public List<Enemy> bosses;
     //[SerializeField]
     //public List<Enemy> currentEnemy;
 
-    private Enemy prevEnemy;
+    private Enemy frontEnemy;
+
+    [SerializeField]
+    private List<Enemy> currentEnemies;
 
     public bool enemyIsDead;
 
@@ -47,12 +56,18 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private int enemySpawnedNumber, enemyDeadNum;
 
+    [SerializeField]
+    private int bossSpawnPeriod = 10;
+
     //public int stage;
 
     //public int enemySpawnedThisRound;
 
     [SerializeField]
     private List<Transform> enemySpawnPos;
+
+    [SerializeField]
+    private List<Transform> bossSpawnPos;
 
     private void Awake()
     {
@@ -65,7 +80,6 @@ public class GameController : MonoBehaviour
             instance = this;
         }
 
-        playerData.game_currentEnemy = new List<Enemy>();
     }
 
     private IEnumerator SelectInSeconds(float seconds)
@@ -99,10 +113,8 @@ public class GameController : MonoBehaviour
             InitGame();
 
             // Spawn enemy by the given number
-            SpawnEnemy(playerData.game_enemySpawnedThisRound);
-            LocateEnemies(playerData.game_currentEnemy);
-
-            
+            /*SpawnEnemies(playerData.game_enemySpawnedThisRound)*/
+            SpawnEnemies(playerData.game_enemySpawnedThisRound);
         }
     }
 
@@ -113,6 +125,25 @@ public class GameController : MonoBehaviour
         TouchManager.Instance.gameObject.SetActive(true);
         
 
+    }
+
+    public void GoToNextStage()
+    {
+        //TODO show gamestage effect or animation
+        playerData.game_stage++;
+        int stage = playerData.game_stage;
+        playerData.game_enemySpawnedThisRound = playerData.game_stage % 3 + 1;
+        TouchManager.Instance.gameObject.SetActive(false);
+        TurnToggle(true);
+        EmptyEnemiesAndHealth();
+
+        if (stage % bossSpawnPeriod != 0)
+        {
+            SpawnEnemy(5f);
+        } else
+        {
+            SpawnBoss();
+        }
     }
 
     // after one monster is spawned at the very beginning
@@ -129,11 +160,44 @@ public class GameController : MonoBehaviour
             // touch set active, toggle set inactive
             InitGame();
             // Spawn enemy by the given number
-            SpawnEnemy(playerData.game_enemySpawnedThisRound);
-            LocateEnemies(playerData.game_currentEnemy);
+            SpawnEnemies(playerData.game_enemySpawnedThisRound);
         }
-       
+    }
 
+    public void SpawnEnemies(int num)
+    {
+
+
+        int playerLevel = playerData.player_level;
+        for (int i = 0; i < num; ++i)
+        {
+            int randNum = Random.Range(0, enemies.Count);
+            Enemy clone = enemyPool.GetFromPool(randNum);
+            
+            //clone.Init((int)((playerLevel + .5 * gameStage) * 100), 
+            //    (int)((playerLevel + .5 * gameStage) * 10),
+            //    (int)((playerLevel + .5 * gameStage) * 5),
+            //    (int)((playerLevel + .5 * gameStage) * ((playerLevel + .5 * gameStage) * 10 + (playerLevel + .5 * gameStage) * 5)/2),
+            //    (int)(1 * (playerLevel + (gameStage * 1.5)))
+            //    );
+
+            currentEnemies.Add(clone);
+            //AddEnemy(clone);
+            enemySpawnedNumber++;
+        }
+
+        LocateEnemies(currentEnemies);
+    }
+
+    public void SpawnBoss(int num = 1)
+    {
+        for (int i = 0; i < num; i++)
+        {
+            int randNum = Random.Range(0, bosses.Count);
+            Enemy bossClone = bossPool.GetFromPool(randNum);
+            currentEnemies.Add(bossClone);
+        }
+        LocateEnemies(currentEnemies);
     }
 
     // spawn enemy by given number
@@ -142,14 +206,18 @@ public class GameController : MonoBehaviour
         int playerLevel = playerData.player_level;
         for (int i = 0; i < num; ++i)
         {
-            Enemy clone = Instantiate(enemies[Random.Range(0, enemies.Count)]);
+            int randNum = Random.Range(0, enemies.Count);
+            Enemy clone = enemyPool.GetFromPool(randNum);
+            Debug.Log(randNum + " randNum");
             //clone.Init((int)((playerLevel + .5 * gameStage) * 100), 
             //    (int)((playerLevel + .5 * gameStage) * 10),
             //    (int)((playerLevel + .5 * gameStage) * 5),
             //    (int)((playerLevel + .5 * gameStage) * ((playerLevel + .5 * gameStage) * 10 + (playerLevel + .5 * gameStage) * 5)/2),
             //    (int)(1 * (playerLevel + (gameStage * 1.5)))
             //    );
-            playerData.game_currentEnemy.Add(clone);
+            Debug.Log("11");
+            //AddEnemy(clone);
+            
             enemySpawnedNumber++;
         }
        
@@ -158,16 +226,14 @@ public class GameController : MonoBehaviour
     // spawn enemy if enemiesleft is not empty
     public void SpawnEnemy(List<Enemy> enemiesLeft)
     {
-        
-
         // if enemy exist previous game
         if(enemiesLeft.Count > 0)
         {
             for (int i = 0; i < enemiesLeft.Count; ++i)
             {
                 Enemy temp = Instantiate(enemiesLeft[i]);
-
-                playerData.game_currentEnemy.Add(temp);
+                Debug.Log("22");
+                //AddEnemy(temp);
             }
         } else
         {
@@ -177,16 +243,41 @@ public class GameController : MonoBehaviour
     }
 
     // locates enemy to random pos and also locate healthbar to each enemy
-    public void LocateEnemies(List<Enemy> enems)
+    public void LocateEnemies(List<int> enemIDs)
     {
-        SortEnemy(enems);
-        for (int k = 0; k < enems.Count; ++k)
+        List<Enemy> temps = GetEnemiesByIDs(enemIDs);
+
+        SortEnemy(temps);
+        for (int k = 0; k < temps.Count; ++k)
         {
-            enems[k].transform.position = enemySpawnPos[k].position;
+            temps[k].transform.position = enemySpawnPos[k].position;
         }
-        healthControl.LocateHealthBar(enems);
+
+        healthControl.LocateHealthBar(temps);
     }
 
+    public void LocateEnemies(List<Enemy> enemss)
+    {
+        SortEnemy(enemss);
+        for (int k = 0; k < enemss.Count; ++k)
+        {
+            enemss[k].transform.position = enemySpawnPos[k].position;
+        }
+
+        healthControl.LocateHealthBar(enemss);
+    }
+
+    public void LocateBosses(List<Enemy> bosses)
+    {
+        SortEnemy(bosses);
+        for(int i = 0; i < bosses.Count; ++i)
+        {
+            bosses[i].transform.position = bossSpawnPos[i].position;
+        }
+
+
+    }
+    
     // sorts enemy based on their forwardNumber
     public void SortEnemy(List<Enemy> lists)
     {
@@ -212,16 +303,17 @@ public class GameController : MonoBehaviour
     {
         bool allDead = true;
 
-        if(playerData.game_currentEnemy.Count == 0)
+        if(playerData.game_enemySpawnedThisRound == 0)
         {
             Debug.Log("no Enemy");
             return true;
         }
 
-        foreach (Enemy enemy in playerData.game_currentEnemy)
+        for(int i = 0; i < currentEnemies.Count; ++i) 
         {
-            allDead = allDead && !enemy.isAlive;
+            allDead = allDead && !currentEnemies[i].isAlive;
         }
+
         
         return allDead;
     }
@@ -229,11 +321,27 @@ public class GameController : MonoBehaviour
     // Empties Current enemies list and health bar list
     public void EmptyEnemiesAndHealth()
     {
-        playerData.game_currentEnemy.Clear();
+        currentEnemies.Clear();
         healthControl.currentHealths.Clear();
     }
+    
+    // Calls and clones enemies by given ids
+    public List<Enemy> GetEnemiesByIDs(List<int> ids)
+    {
+        List<Enemy> listOfEnems = new List<Enemy>();
 
-
+        for(int i = 0; i < enemies.Count; ++i)
+        {
+            for(int k = 0; k < ids.Count; ++k)
+            {
+                if(enemies[i].getID() == ids[k])
+                {
+                     listOfEnems.Add(enemies[i]);
+                }
+            }
+        }
+        return listOfEnems;
+    }
 
     public void TurnToggle(bool set)
     {
@@ -250,48 +358,89 @@ public class GameController : MonoBehaviour
         return playerData.game_stage;
     }
 
-    public void SaveGame()
+    public Enemy GetFrontEnemy()
     {
-        //PlayerController.Instance.SavePlayerData();
-        //SaveProgress();
-        SaveClass.Instance.SaveGame();
+
+        return currentEnemies[0];
     }
 
-    //public void SaveProgress()
-    //{
-    //    playerData.game_stage = stage;
-    //    playerData.game_currentEnemy = currentEnemy;
-    //    playerData.game_enemySpawnedThisRound = enemySpawnedThisRound;
-    //}
+    public List<Enemy> GetAllEnemies()
+    {
+        return enemies;
+    }
+
+    public void SaveGame()
+    {
+        Debug.Log("Saved");
+        SaveClass.Instance.SaveGame(playerData);
+    }
 
     public void LoadGame()
     {
-        SaveClass.Instance.LoadGame();
-        //LoadProgress();
-        //PlayerController.Instance.LoadPlayerData();
-        //Debug.Log("PlayerLevellll: " + playerData.player_level);
+        playerData = SaveClass.Instance.LoadGame();
     }
-
-    //public void LoadProgress()
-    //{
-    //    stage = playerData.game_stage;
-    //    currentEnemy = playerData.game_currentEnemy;
-    //    enemySpawnedThisRound = playerData.game_enemySpawnedThisRound;
-    //}
 
     public PlayerData GetPlayerData()
     {
         return playerData;
     }
+
+    public int GetGameStage()
+    {
+        return playerData.game_stage;
+    }
+
+    public void DeleteFirstEnemy()
+    {
+        currentEnemies.RemoveAt(0);
+    }
+
+    
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.DeleteAll();
         LoadGame();
+        PlayerController.Instance.SetPlayerData(playerData);
         enemySpawnedNumber = 0;
         toggleOn = true;
         SpawnEnemy(0f);
+        UpdateGameWithLoadedData();
     }
 
+    public void UpdateGameWithLoadedData()
+    {
+        UIController.Instance.UpdatePlayerLevel();
+        UIController.Instance.UpdatePlayerInfoStat();
+        expManager.UpdateExp(PlayerController.Instance.GetCurrentExp(), PlayerController.Instance.GetMaxExp());
+        //TODO update player hp
+
+
+    }
+    //public void ResetData()
+    //{
+    //    Debug.Log("SetnewData");
+    //    playerData = new PlayerData();
+    //    playerData.player_name = "player" + UnityEngine.Random.Range(0, 99999).ToString();
+    //    playerData.player_currentHP = 100;
+    //    playerData.player_maxHP = 100;
+    //    playerData.player_attack = 10;
+    //    playerData.player_defense = 5;
+    //    playerData.player_gold = 10;
+    //    playerData.player_level = 1;
+    //    playerData.player_maxExp = 10;
+    //    playerData.player_currentExp = 0;
+    //    //playerData.player_Inventory = new List<Item>();
+
+
+    //    playerData.game_stage = 1;
+    //    playerData.game_currentEnemy = new EnemySaveData();
+    //    playerData.game_currentEnemy.currentHP = new List<float>();
+    //    playerData.game_currentEnemy.maxHP = new List<float>();
+    //    playerData.game_currentEnemy.id = new List<int>();
+    //    playerData.game_currentEnemy.isAlive = new List<bool>();
+    //    playerData.game_enemySpawnedThisRound = playerData.game_stage % 3 + 1;
+    //}
 
     private void OnApplicationPause(bool pause)
     {

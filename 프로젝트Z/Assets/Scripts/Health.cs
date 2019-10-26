@@ -15,7 +15,9 @@ public class Health : MonoBehaviour
     {
         health = GetComponent<Image>();
         healthText = gameObject.transform.parent.GetComponentInChildren<Text>();
+        transform.parent.gameObject.transform.SetAsFirstSibling();
     }
+
 
     //public void ShowHPAnimation(Enemy enem, float hpLoss)
     //{
@@ -110,13 +112,7 @@ public class Health : MonoBehaviour
     {
         health.fillAmount = current / max;
         Debug.Log(current + "/" + max +"\n" + current/max);
-        healthText.text = current.ToString() + " / " + max.ToString();
+        healthText.text = current.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-
-    }
 }

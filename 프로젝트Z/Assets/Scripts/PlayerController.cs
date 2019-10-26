@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerController : Character
+public class PlayerController : MonoBehaviour
 {
     private static PlayerController instance;
 
@@ -37,18 +38,19 @@ public class PlayerController : Character
     public bool isAlive;
 
     [SerializeField]
-    private UIController uiControl;
+    private DamageTextPool dmgPool;
 
     [SerializeField]
     private ExpManager expManager;
+
+    [SerializeField]
+    private PlayerData playerData;
 
     public Health health;
 
     private List<Item> p_inventory;
 
-    private GameController gameControl;
-
-    private PlayerData playerData;
+    Vector3 randomizeVector = new Vector3(.2f, 0, 0);
 
     private void Awake()
     {
@@ -60,8 +62,17 @@ public class PlayerController : Character
         {
             instance = this;
         }
-        gameControl = GameController.Instance;
-        playerData = gameControl.GetPlayerData();
+    }
+
+    public bool isDead()
+    {
+        if(getCurrentHP() > 0)
+        {
+            return false;
+        } 
+
+        isAlive = false;
+        return true;
     }
 
     // damage received
@@ -80,6 +91,10 @@ public class PlayerController : Character
         playerData.player_currentHP -= atk;
     }
 
+    public void SetPlayerData(PlayerData pData)
+    {
+        playerData = pData;
+    }
     //public void Init(string p_name, int p_hp, int p_attk, int p_def)
     //{
     //    char_name = p_name;
@@ -124,23 +139,34 @@ public class PlayerController : Character
     //    maxExp = pd.player_maxExp;
     //    //p_inventory = save.player_Inventory;
     //}
+
+       
+
     public void GainGoldAndExp(Enemy enemy)
     {
         playerData.player_gold += enemy.getDropGold();
+        // if given exp allows level up
         if(playerData.player_currentExp + enemy.getDropExp() >= playerData.player_maxExp)
         {
+            Debug.Log(playerData.player_currentExp + ", " + enemy.getDropExp() + " max:"
+                + playerData.player_maxExp);
+            Debug.Log("LVLUP");
             // TODO player level up
             float remainExp = enemy.getDropExp() + playerData.player_currentExp - playerData.player_maxExp;
 
             LevelUp();
             playerData.player_currentExp += remainExp;
             expManager.UpdateExp(playerData.player_currentExp, playerData.player_maxExp);
+
+            //GameController.Instance.SaveGame();
         } else
         {
+            Debug.Log("Gained exp");
             playerData.player_currentExp += enemy.getDropExp();
             expManager.UpdateExp(playerData.player_currentExp, playerData.player_maxExp);
+            GameController.Instance.SaveGame();
         }
-
+        UIController.Instance.UpdatePlayerInfoStat();
         
     }
 
@@ -148,7 +174,7 @@ public class PlayerController : Character
     {
         playerData.player_level++;
         // TODO text popup
-        uiControl.UpdatePlayerLevel();
+        UIController.Instance.UpdatePlayerLevel();
         
         playerData.player_maxHP += (int)(Mathf.Pow(2, (float)(playerData.player_level * .03) + 1));
         playerData.player_attack += (int)(Mathf.Pow(2, (float)(playerData.player_level * .03) + 1));
@@ -158,14 +184,66 @@ public class PlayerController : Character
         playerData.player_currentExp = 0;
     }
 
-    public override bool IsEnemy()
+    public void Attack(Enemy target)
     {
-        return false;
+
+
+        float damaged = target.CalculateDamage(GameController.Instance.GetPlayerData().player_attack);
+        //temp.LoseHealth(damaged);
+        Debug.Log(damaged);
+
+        target.LoseHealth(damaged);
+
+       // floating text (damage)
+        ShowFloatingText(target, damaged);
+        Debug.Log("SHow Text");
+        
+
+        target.health.ShowHP(target.getCurrentHP(), target.getMaxHP());
+
+        if (!target.attackAnimationPlaying)
+        {
+            target.SetDamaged();
+        }
+        //GameController.Instance.SaveGame();
+        // if dead
+        if (target.isDead())
+        {
+
+            target.SetDead();
+
+            GainGoldAndExp(target);
+
+            Debug.Log("Enemy dead!!");
+
+            //target.gameObject.SetActive(false);
+            //target.health.transform.parent.gameObject.SetActive(false);
+            GameController.Instance.DeleteFirstEnemy();
+
+            // when all enemies are dead in a round
+            if (GameController.Instance.AllEnemiesDead())
+            {
+                Debug.Log("Enemies all dead");
+                GameController.Instance.GoToNextStage();
+            }
+
+        }
+        
+       
+
+
     }
 
-    public override bool IsPlayer()
+    private void ShowFloatingText(Enemy enemy, float damage)
     {
-        return true;
+        Text go = dmgPool.GetFromPool();
+        go.text = damage.ToString();
+        //temp.transform.position = GameController.Instance.GetFrontEnemy().gameObject.transform.position + Vector3.up * 2;
+        
+        go.transform.position = GameController.Instance.GetFrontEnemy().gameObject.transform.position + Vector3.up * 1.5f;
+        go.transform.position += new Vector3(Random.Range(-randomizeVector.x, randomizeVector.x), 0, 0);
+        Debug.Log(enemy.transform.position);
+        //go.gameObject.transform.localPosition += new Vector3(0, 2, 0);
     }
 
     public string getName()
@@ -196,6 +274,11 @@ public class PlayerController : Character
     public int GetLevel()
     {
         return playerData.player_level;
+    }
+
+    public int GetCurrentGold()
+    {
+        return playerData.player_gold;
     }
 
     public float GetCurrentExp()

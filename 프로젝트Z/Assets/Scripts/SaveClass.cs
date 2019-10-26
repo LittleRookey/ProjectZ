@@ -27,11 +27,11 @@ public class SaveClass : MonoBehaviour
         {
             instance = this;
         }
-    }
-    [SerializeField]
-    private PlayerData playerData;
 
-    public void SaveGame()
+    }
+
+
+    public void SaveGame(PlayerData playerData)
     {
         BinaryFormatter bf = new BinaryFormatter();
         MemoryStream stream = new MemoryStream();
@@ -49,11 +49,11 @@ public class SaveClass : MonoBehaviour
         //PlayerPrefs.SetString("playerName", userName);
     }
 
-    public void LoadGame()
+    public PlayerData LoadGame()
     {
         string data = PlayerPrefs.GetString("player");
         BinaryFormatter bf = new BinaryFormatter();
-
+        PlayerData playerData;
         if (!string.IsNullOrEmpty(data))
         {
             MemoryStream stream = new MemoryStream(Convert.FromBase64String(data));
@@ -65,13 +65,15 @@ public class SaveClass : MonoBehaviour
         {
             // 새로 기본 스탯을 준디. 
             
-            SetNewData();
+            SetNewData(out playerData);
         }
+        return playerData;
     }
 
-    public void SetNewData()
+    public void SetNewData(out PlayerData playerData)
     {
         Debug.Log("SetnewData");
+        playerData = new PlayerData();
         playerData.player_name = "player" + UnityEngine.Random.Range(0, 99999).ToString();
         playerData.player_currentHP = 100;
         playerData.player_maxHP = 100;
@@ -85,8 +87,11 @@ public class SaveClass : MonoBehaviour
         
 
         playerData.game_stage = 1;
-        playerData.game_currentEnemy = new List<Enemy>();
+        //playerData.game_currentEnemy = new EnemySaveData();
+        //playerData.game_currentEnemy.currentHP = new List<float>();
+        //playerData.game_currentEnemy.maxHP = new List<float>();
+        //playerData.game_currentEnemy.id = new List<int>();
+        //playerData.game_currentEnemy.isAlive = new List<bool>();
         playerData.game_enemySpawnedThisRound = playerData.game_stage % 3 + 1;
-        SaveGame();
     }
 }

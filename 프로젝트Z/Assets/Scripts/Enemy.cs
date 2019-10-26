@@ -8,7 +8,8 @@ public enum eEnemyStatus
     dead, Idle, Attack
 };
 
-public class Enemy : Character
+
+public class Enemy : MonoBehaviour
 {
     public Animator anim;
 
@@ -31,6 +32,8 @@ public class Enemy : Character
     private int dropGold;
     [SerializeField]
     private int dropExp;
+    [SerializeField]
+    private int id;
     public eEnemyStatus enemyStatus;
     private static float ONE_BASE_HP = 100;
     private static float ONE_BASE_ATTACK = 10;
@@ -40,8 +43,23 @@ public class Enemy : Character
     [SerializeField]
     private bool isDPS;
 
+    public bool attackAnimationPlaying;
+
+    [SerializeField]
+    private MonsterData monsterData;
+
+    [SerializeField]
+    private GameObject floatingTextPrefab;
+
     //[SerializeField]
     //private List<Skill> skills;
+
+
+    private void OnEnable()
+    {
+        ResetMonster();
+        isAlive = true;
+    }
 
     public void Init(float hp, float attk, float def, int m_dropGold, int m_dropExp)
     {
@@ -52,6 +70,62 @@ public class Enemy : Character
         dropGold = m_dropGold;
         dropExp = m_dropExp;
     }
+
+    private void ResetMonster()
+    {
+        currentHP = maxHP;
+        health.ShowHP(currentHP, maxHP);
+    }
+
+    public bool isDead()
+    {
+        if (currentHP > 0)
+        {
+            return false;
+        }
+
+        isAlive = false;
+        return true;
+    }
+
+    public int getID()
+    {
+        return id;
+    }
+
+    public void Attack(PlayerController target)
+    {
+        target.LoseHealth(attack);
+        Debug.Log("Player lost hp");
+
+        //if(floatingTextPrefab)
+        //{
+        //    ShowFloatingText();
+        //    Debug.Log("SHow Text");
+        //}
+
+        target.health.ShowHP(target.getCurrentHP(), target.getMaxHP());
+
+        // if dead gameover
+        if (target.isDead())
+        {
+            Debug.Log("Player dead!!");
+            //animate dead anim
+
+            // give penalty to player
+
+            // Reload scene
+
+        }
+        
+
+    }
+
+    private void ShowFloatingText()
+    {
+        Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+    }
+
     // damage received
     public float CalculateDamage(float atk)
     {
@@ -67,6 +141,7 @@ public class Enemy : Character
         }
         currentHP -= atk;
     }
+
     public int getDropGold()
     {
         return dropGold;
@@ -85,16 +160,6 @@ public class Enemy : Character
     public eEnemyStatus getEnemyState()
     {
         return enemyStatus;
-    }
-
-    public override bool IsEnemy()
-    {
-        return true;
-    }
-
-    public override bool IsPlayer()
-    {
-        return false;
     }
 
     public string getName()
@@ -139,10 +204,11 @@ public class Enemy : Character
         //StartCoroutine(Action());
         enemyStatus = eEnemyStatus.Idle;
         isAlive = true;
+        attackAnimationPlaying = false;
     }
 
     
-    public IEnumerator Action()
+    public IEnumerator Action(int enemyBehavePattern)
     {
         while (true)
         {
@@ -154,6 +220,8 @@ public class Enemy : Character
                     break;
                 case eEnemyStatus.Attack:
                     // constantly attacks player
+                    int patt = Random.Range(0, 5);
+
                     anim.SetTrigger("attack");
                     break;
                 case eEnemyStatus.dead:
@@ -167,6 +235,10 @@ public class Enemy : Character
         }
     }
 
+    //public Enemy Clone()
+    //{
+    //    return 
+    //}
     private IEnumerator AttackPlayer(PlayerController player)
     {
         // appear aura
@@ -176,5 +248,23 @@ public class Enemy : Character
 
     }
     
+    public void SetDamaged()
+    {
+        anim.SetTrigger("damage");
+        attackAnimationPlaying = true;
+    }
+
+    public void SetIdle()
+    {
+        anim.SetTrigger("Idle");
+        attackAnimationPlaying = false;
+    }
+
+    public void SetDead()
+    {
+        anim.SetTrigger("dead");
+        attackAnimationPlaying = false;
+        health.transform.parent.gameObject.SetActive(false);
+    }
     
 }
