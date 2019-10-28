@@ -173,7 +173,6 @@ public class GameController : MonoBehaviour
         {
             int randNum = Random.Range(0, enemies.Count);
             Enemy clone = enemyPool.GetFromPool(randNum);
-            
             //clone.Init((int)((playerLevel + .5 * gameStage) * 100), 
             //    (int)((playerLevel + .5 * gameStage) * 10),
             //    (int)((playerLevel + .5 * gameStage) * 5),
@@ -414,7 +413,6 @@ public class GameController : MonoBehaviour
         UIController.Instance.UpdatePlayerInfoStat();
         expManager.UpdateExp(PlayerController.Instance.GetCurrentExp(), PlayerController.Instance.GetMaxExp());
         //TODO update player hp
-
 
     }
     //public void ResetData()

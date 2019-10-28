@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 {
     public Animator anim;
 
-    public Health health;
+    public HPAndSpeedManager health;
     public Text healthText;
     [SerializeField]
     private string char_name;
@@ -56,8 +56,7 @@ public class Enemy : MonoBehaviour
 
 
     private void OnEnable()
-    {
-        ResetMonster();
+    { 
         isAlive = true;
     }
 
@@ -71,10 +70,10 @@ public class Enemy : MonoBehaviour
         dropExp = m_dropExp;
     }
 
-    private void ResetMonster()
+    public void ResetMonster()
     {
         currentHP = maxHP;
-        health.ShowHP(currentHP, maxHP);
+        //health.ShowHP(currentHP, maxHP);
     }
 
     public bool isDead()
@@ -187,6 +186,10 @@ public class Enemy : MonoBehaviour
         return defense;
     }
 
+    public void SetHealth(Health hps)
+    {
+        health = hps;
+    }
     public void LoseOneHP()
     {
         currentHP--;
@@ -264,7 +267,7 @@ public class Enemy : MonoBehaviour
     {
         anim.SetTrigger("dead");
         attackAnimationPlaying = false;
-        health.transform.parent.gameObject.SetActive(false);
+        health.gameObject.SetActive(false);
     }
     
 }

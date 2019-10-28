@@ -4,115 +4,40 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Health : MonoBehaviour
+public class Health : HPAndSpeedManager
 {
-    private Image health;
-    [SerializeField]
-    private Text healthText;
+    
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        health = GetComponent<Image>();
-        healthText = gameObject.transform.parent.GetComponentInChildren<Text>();
-        transform.parent.gameObject.transform.SetAsFirstSibling();
-    }
-
-
-    //public void ShowHPAnimation(Enemy enem, float hpLoss)
+    //// Start is called before the first frame update
+    //void Awake()
     //{
-    //    StartCoroutine(AnimateHPLoss(enem, hpLoss));
+    //    //health = GetComponent<Image>();
+    //    //healthText = gameObject.GetComponentInChildren<Text>();
+    //    //transform.parent.gameObject.transform.SetAsFirstSibling();
     //}
 
-    //public IEnumerator AnimateHPLoss(Enemy enem, float hpLoss)
+    //private void OnEnable()
     //{
-    //    while (true)
-    //    {
-
-
-    //        if (current - hpLoss <= 0)
-    //        {
-    //            float leftNum = hpLoss - current;
-    //            // when health goes below 0
-    //            for (int i = 0; i < hpLoss - leftNum; ++i)
-    //            {
-    //                enem.LoseOneHP();
-    //                health.fillAmount = current / max;
-    //                healthText.text = current.ToString() + " / " + max.ToString();
-    //                yield return new WaitForSeconds(.01f);
-    //            }
-    //            transform.parent.gameObject.SetActive(false);
-    //            Debug.Log("left health1" + " " + current);
-    //        }
-    //        else
-    //        {
-    //            // when health is above 0
-    //            for (int i = 0; i < hpLoss; ++i)
-    //            {
-    //                float current = enem.getCurrentHP();
-    //                float max = enem.getMaxHP();
-    //                enem.LoseOneHP();
-    //                health.fillAmount = current / max;
-    //                healthText.text = current.ToString() + " / " + max.ToString();
-    //                Debug.Log(current.ToString() + " / " + max.ToString());
-    //                yield return new WaitForSeconds(.01f);
-    //            }
-    //            Debug.Log("left health2" + " " + current + " " + max);
-
-    //        }
-    //        break;
-    //    }
+    //    healthImage = GetComponent<Image>();
+    //    healthText = gameObject.GetComponentInChildren<Text>();
+    //    transform.parent.gameObject.transform.SetAsFirstSibling();
     //}
 
-    // HPLoss = damage character get
-    //private IEnumerator AnimateHPLoss(Enemy temp, float current, float max, float hpLoss)
+    //public Text GetText()
     //{
-
-    //    while(true)
-    //    {
-    //        if (current - hpLoss <= 0)
-    //        {
-    //            float leftNum = hpLoss - current;
-
-    //            for (int i = 0; i < hpLoss; ++i)
-    //            {
-    //                current--;
-    //                health.fillAmount = current / max;
-    //                healthText.text = current.ToString() + " / " + max.ToString();
-    //                yield return new WaitForSeconds(.05f);
-    //            }
-
-
-
-    //            transform.parent.gameObject.SetActive(false);
-
-
-    //        }
-    //        else
-    //        {
-    //            float prevHP = current;
-
-    //            for (int i = 0; i < hpLoss; ++i)
-    //            {
-    //                current--;
-    //                health.fillAmount = current / max;
-
-    //                healthText.text = current.ToString() + " / " + max.ToString();
-    //                yield return new WaitForSeconds(.05f);
-    //            }
-
-
-
-    //        }
-    //        break;
-    //    }
+    //    return healthText;
     //}
 
-    public void ShowHP(float current, float max)
-    {
-        health.fillAmount = current / max;
-        Debug.Log(current + "/" + max +"\n" + current/max);
-        healthText.text = current.ToString();
-    }
+    //public Image GetHealthImage()
+    //{
+    //    return healthImage;
+    //}
+
+    //public void ShowHP(float current, float max)
+    //{
+    //    healthImage.fillAmount = current / max;
+    //    Debug.Log(current + "/" + max + "\n" + current / max);
+    //    healthText.text = current.ToString();
+    //}
 
 }

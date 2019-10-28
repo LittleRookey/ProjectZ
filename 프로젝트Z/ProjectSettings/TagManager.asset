@@ -11,6 +11,7 @@ TagManager:
   - PlayerHP
   - PlayerExp
   - PlayerBar
+  - EnemyHP
   layers:
   - Default
   - TransparentFX
@@ -45,9 +46,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: HPText
     uniqueID: 3109526633
     locked: 0
-  - name: Default
-    uniqueID: 0
+  - name: UI
+    uniqueID: 1896344469
     locked: 0

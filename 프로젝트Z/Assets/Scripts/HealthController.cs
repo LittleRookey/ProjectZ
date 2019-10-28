@@ -24,7 +24,7 @@ public class HealthController : MonoBehaviour
     [SerializeField]
     public Image PlayerHPBar;
 
-    public List<Health> currentHealths;
+    public List<HPAndSpeedManager> currentHealths;
 
     public List<Text> HPTexts;
 
@@ -40,21 +40,25 @@ public class HealthController : MonoBehaviour
         }
     }
 
+    // for enemy
     public void LocateHealthBar(List<Enemy> enemy)
     {
         Debug.Log("HP Located");
         for(int i = 0; i < enemy.Count; ++i)
         {
             // TODO critical image need to be used
-            Health enemHealthBar = monsterHPBarPool.GetFromPool();
-            enemHealthBar.transform.position = enemy[i].transform.position + Vector3.up * 1f;
-            enemHealthBar.transform.localScale = Vector3.one;
+            HPAndSpeedManager enemHPManager = monsterHPBarPool.GetFromPool();
+            enemHPManager.transform.position = enemy[i].transform.position + Vector3.up * 1f;
+            enemHPManager.transform.localScale = Vector3.one;
 
             //health connect with enemy
-            currentHealths.Add(enemHealthBar.GetComponentInChildren<Health>());
-            HPTexts.Add(enemHealthBar.GetComponentInChildren<Text>());
+            currentHealths.Add(enemHPManager);
+            HPTexts.Add(enemHPManager.GetText());
 
             enemy[i].health = currentHealths[i];
+
+            // Reset monster health every spawn
+            enemy[i].ResetMonster();
             Debug.Log(enemy.Count);
             enemy[i].healthText = HPTexts[i];
 
@@ -63,6 +67,7 @@ public class HealthController : MonoBehaviour
         }
     }
 
+    // for boss
     //public void LocateBossHealthBar(List<Enemy> enemy)
     //{
     //    Debug.Log("HP Located");
@@ -84,9 +89,5 @@ public class HealthController : MonoBehaviour
     //        //    + enemy[i].getMaxHP().ToString();
     //    }
     //}
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

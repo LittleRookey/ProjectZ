@@ -4,5 +4,13 @@ using UnityEngine;
 
 public class EnemyPool : ObjectPool<Enemy>
 {
-    
+    //[SerializeField]
+
+    //protected override Enemy AddFunctionality(int id)
+    //{
+    //    Enemy enem = Instantiate(mOrigin[id]);
+    //    enem.ResetMonster();
+    //    enem.SetHealth()
+    //    return base.AddFunctionality(id);
+    //}
 }

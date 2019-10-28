@@ -19,7 +19,7 @@ public class ObjectPool<T> : MonoBehaviour where T: Component
     }
     
 
-    public virtual T GetFromPool(int id)
+    public T GetFromPool(int id = 0)
     {
         
         for(int i = 0; i < mPool[id].Count; i++)
@@ -31,14 +31,13 @@ public class ObjectPool<T> : MonoBehaviour where T: Component
             }
         }
 
+        return AddFunctionality(id);
+    }
+
+    protected virtual T AddFunctionality(int id)
+    {
         T temp = Instantiate(mOrigin[id]);
         mPool[id].Add(temp);
         return temp;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
