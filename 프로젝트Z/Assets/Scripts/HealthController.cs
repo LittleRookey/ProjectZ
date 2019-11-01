@@ -22,6 +22,8 @@ public class HealthController : MonoBehaviour
     public MonsterHPBarPool monsterHPBarPool;
 
     [SerializeField]
+    private BossHPBarPool bossHPBarPool;
+    [SerializeField]
     public Image PlayerHPBar;
 
     public List<HPAndSpeedManager> currentHealths;
@@ -51,15 +53,18 @@ public class HealthController : MonoBehaviour
             enemHPManager.transform.position = enemy[i].transform.position + Vector3.up * 1f;
             enemHPManager.transform.localScale = Vector3.one;
 
+            enemHPManager.Init();
+
+            enemy[i].SetSpeed(enemHPManager.GetSpeed());
+            enemy[i].SetActSpeed(Random.Range(.75f, 1.25f));
             //health connect with enemy
             currentHealths.Add(enemHPManager);
             HPTexts.Add(enemHPManager.GetText());
 
-            enemy[i].health = currentHealths[i];
+            enemy[i].SetHealth(currentHealths[i]);
 
             // Reset monster health every spawn
             enemy[i].ResetMonster();
-            Debug.Log(enemy.Count);
             enemy[i].healthText = HPTexts[i];
 
             //enemy[i].healthText.text = enemy[i].getCurrentHP().ToString() + " / " 
@@ -68,26 +73,34 @@ public class HealthController : MonoBehaviour
     }
 
     // for boss
-    //public void LocateBossHealthBar(List<Enemy> enemy)
-    //{
-    //    Debug.Log("HP Located");
-    //    for (int i = 0; i < enemy.Count; ++i)
-    //    {
-    //        Image enemHealthBar = Instantiate(healthBarEnemy, canvas.transform);
-    //        enemHealthBar.transform.position = enemy[i].transform.position + Vector3.up * 1f;
-    //        enemHealthBar.transform.localScale = Vector3.one;
+    public void Locatebosshealthbar(List<Enemy> enemy)
+    {
+        for (int i = 0; i < enemy.Count; ++i)
+        {
+            // TODO critical image need to be used
+            HPAndSpeedManager enemHPManager = bossHPBarPool.GetFromPool();
+            enemHPManager.transform.position = enemy[i].transform.position + Vector3.up * 3f;
+            //enemHPManager.transform.localScale = Vector3.one;
 
-    //        //health connect with enemy
-    //        currentHealths.Add(enemHealthBar.GetComponentInChildren<Health>());
-    //        HPTexts.Add(enemHealthBar.GetComponentInChildren<Text>());
+            enemy[i].SetSpeed(enemHPManager.GetSpeed());
 
-    //        enemy[i].health = currentHealths[i];
-    //        Debug.Log(enemy.Count);
-    //        enemy[i].healthText = HPTexts[i];
+            enemHPManager.Init();
 
-    //        //enemy[i].healthText.text = enemy[i].getCurrentHP().ToString() + " / " 
-    //        //    + enemy[i].getMaxHP().ToString();
-    //    }
-    //}
-    
+            enemy[i].SetSpeed(enemHPManager.GetSpeed());
+            enemy[i].SetActSpeed(Random.Range(.75f, 1.25f));
+
+            //health connect with enemy
+            currentHealths.Add(enemHPManager);
+            HPTexts.Add(enemHPManager.GetText());
+
+            enemy[i].SetHealth(currentHealths[i]);
+
+            // Reset monster health every spawn
+            enemy[i].ResetMonster();
+            Debug.Log(enemy.Count);
+            enemy[i].healthText = HPTexts[i];
+        }
+
+    }
+
 }

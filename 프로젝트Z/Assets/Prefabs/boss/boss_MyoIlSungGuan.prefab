@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 484746}
   - component: {fileID: 9507654}
   - component: {fileID: 6186196}
+  - component: {fileID: 6601827061696820160}
   m_Layer: 8
   m_Name: boss_MyoIlSungGuan
   m_TagString: Enemy
@@ -292,6 +293,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.819322, y: 2.056695}
   m_EdgeRadius: 0
+--- !u!114 &6601827061696820160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b287be7894f9b7e4c847af62a4e2491f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &117136
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,6 +444,7 @@ MonoBehaviour:
   enemyStatus: 0
   isTank: 0
   isDPS: 0
+  isBoss: 1
   attackAnimationPlaying: 0
   floatingTextPrefab: {fileID: 3029012024258112190, guid: 05821013a6390524eabfde0f3a638481,
     type: 3}

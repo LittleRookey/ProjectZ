@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
 {
     public Animator anim;
 
+    private VFXPool vPool;
+
     public HPAndSpeedManager health;
     public Text healthText;
     [SerializeField]
@@ -35,13 +37,23 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private int id;
     public eEnemyStatus enemyStatus;
+
+    [SerializeField]
+    private float actSpeed;
+
+    [SerializeField]
+    private float maxEnergy = 5f;
+    [SerializeField]
+    private float startEnergy = 0f;
+    [SerializeField]
+    private float currentEnergy;
+
+    [SerializeField]
+    private Image speedImage;
+
     private static float ONE_BASE_HP = 100;
     private static float ONE_BASE_ATTACK = 10;
     private static float ONE_BASE_DEFENSE = 5;
-    [SerializeField]
-    private bool isTank;
-    [SerializeField]
-    private bool isDPS;
 
     public bool attackAnimationPlaying;
 
@@ -70,6 +82,17 @@ public class Enemy : MonoBehaviour
         dropExp = m_dropExp;
     }
 
+    public void SetVFXPool(VFXPool vp)
+    {
+        vPool = vp;
+    }
+
+    public void UseEffect(eEffectType eEffect)
+    {
+        Timer t = vPool.GetFromPool((int)eEffect);
+        t.transform.position = transform.position;
+
+    }
     public void ResetMonster()
     {
         currentHP = maxHP;
@@ -103,7 +126,7 @@ public class Enemy : MonoBehaviour
         //    Debug.Log("SHow Text");
         //}
 
-        target.health.ShowHP(target.getCurrentHP(), target.getMaxHP());
+        target.health.ShowHPPlayer(target.getCurrentHP(), target.getMaxHP());
 
         // if dead gameover
         if (target.isDead())
@@ -128,16 +151,16 @@ public class Enemy : MonoBehaviour
     // damage received
     public float CalculateDamage(float atk)
     {
+        if(atk - defense <= 0)
+        {
+            return 0;
+        }
         return atk - defense;
 
     }
 
     public void LoseHealth(float atk)
     {
-        if (atk <= 0)
-        {
-            return;
-        }
         currentHP -= atk;
     }
 
@@ -186,7 +209,7 @@ public class Enemy : MonoBehaviour
         return defense;
     }
 
-    public void SetHealth(Health hps)
+    public void SetHealth(HPAndSpeedManager hps)
     {
         health = hps;
     }
@@ -251,6 +274,12 @@ public class Enemy : MonoBehaviour
 
     }
     
+    public void SetAttack()
+    {
+        anim.SetTrigger("Attack");
+        attackAnimationPlaying = false;
+    }
+
     public void SetDamaged()
     {
         anim.SetTrigger("damage");
@@ -269,5 +298,42 @@ public class Enemy : MonoBehaviour
         attackAnimationPlaying = false;
         health.gameObject.SetActive(false);
     }
-    
+
+    public void RenewSpeed()
+    {
+        currentEnergy = startEnergy;
+
+    }
+    public void SetActSpeed(float given)
+    {
+        actSpeed = given;
+    }
+
+    public void SetSpeed(Image speedImg)
+    {
+        speedImage = speedImg;
+    }
+
+    public void AddEnergy()
+    {
+        currentEnergy += Time.deltaTime * actSpeed;
+        ShowSpeed(currentEnergy, maxEnergy);
+    }
+
+    public void ShowSpeed(float current, float max)
+    {
+        speedImage.fillAmount = current / max;
+    }
+
+
+    private void Update()
+    {
+        if (currentEnergy >= maxEnergy)
+        {
+            // enemy attack player
+            SetAttack();
+            currentEnergy = startEnergy;
+        }
+        AddEnergy();
+    }
 }

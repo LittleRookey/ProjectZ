@@ -5245,7 +5245,7 @@ MonoBehaviour:
   isTank: 0
   isDPS: 0
   attackAnimationPlaying: 0
-  floatingTextPrefab: {fileID: 6398417660303708657, guid: 81f9b46679b0d104f88321db938bdbf2,
+  floatingTextPrefab: {fileID: 3029012024258112190, guid: 05821013a6390524eabfde0f3a638481,
     type: 3}
 --- !u!1 &197298
 GameObject:

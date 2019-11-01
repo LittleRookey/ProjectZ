@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossHPBarPool : MonoBehaviour
+public class BossHPBarPool : ObjectPool<HPAndSpeedManager>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private Canvas canvas;
 
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+
+    protected override HPAndSpeedManager AddFunctionality(int id)
     {
-        
+        HPAndSpeedManager temp = Instantiate(mOrigin[id], canvas.transform);
+        mPool[id].Add(temp);
+        return temp;
     }
 }

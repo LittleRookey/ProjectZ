@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
     private DamageTextPool dmgPool;
 
     [SerializeField]
+    private VFXPool vPool;
+
+    [SerializeField]
     private ExpManager expManager;
 
     [SerializeField]
@@ -48,7 +51,11 @@ public class PlayerController : MonoBehaviour
 
     public Health health;
 
+    private List<GameObject> skills;
+
     private List<Item> p_inventory;
+
+    private bool blockSkillOn = false;
 
     Vector3 randomizeVector = new Vector3(.2f, 0, 0);
 
@@ -62,6 +69,7 @@ public class PlayerController : MonoBehaviour
         {
             instance = this;
         }
+        skills = new List<GameObject>();
     }
 
     public bool isDead()
@@ -88,12 +96,32 @@ public class PlayerController : MonoBehaviour
 
     public void LoseHealth(float atk)
     {
+        if(blockSkillOn)
+        {
+            return;
+        }
         playerData.player_currentHP -= atk;
     }
 
+    public void BlockDamage()
+    {
+        blockSkillOn = true;
+    }
+
+    public void StopBlock()
+    {
+        blockSkillOn = false;
+    }
     public void SetPlayerData(PlayerData pData)
     {
         playerData = pData;
+    }
+
+    public void Touch(Vector3 hitPos)
+    {
+        Attack(GameController.Instance.GetFrontEnemy());
+        Timer t = vPool.GetFromPool(1);
+        t.transform.position = hitPos;
     }
     //public void Init(string p_name, int p_hp, int p_attk, int p_def)
     //{
@@ -109,36 +137,6 @@ public class PlayerController : MonoBehaviour
     //    p_inventory = new List<Item>();
     //}
 
-    //public void SavePlayerData()
-    //{
-    //    PlayerData pd = gameControl.GetPlayerData();
-    //    pd.player_name = char_name;
-    //    pd.player_maxHP = maxHP;
-    //    pd.player_currentHP = currentHP;
-    //    pd.player_attack = attack;
-    //    pd.player_defense = defense;
-    //    pd.player_level = level;
-    //    pd.player_gold = m_gold;
-    //    pd.player_currentExp = currentExp;
-    //    pd.player_maxExp = maxExp;
-    //    //save.player_Inventory = p_inventory;
-    //}
-
-    //public void LoadPlayerData()
-    //{
-    //    PlayerData pd = gameControl.GetPlayerData();
-
-    //    char_name = pd.player_name;
-    //    maxHP = pd.player_maxHP;
-    //    currentHP = pd.player_currentHP;
-    //    attack = pd.player_attack;
-    //    defense = pd.player_defense;
-    //    level = pd.player_level;
-    //    m_gold = pd.player_gold;
-    //    currentExp = pd.player_currentExp;
-    //    maxExp = pd.player_maxExp;
-    //    //p_inventory = save.player_Inventory;
-    //}
 
        
 
@@ -157,8 +155,18 @@ public class PlayerController : MonoBehaviour
             LevelUp();
             playerData.player_currentExp += remainExp;
             expManager.UpdateExp(playerData.player_currentExp, playerData.player_maxExp);
+            while (playerData.player_currentExp >= playerData.player_maxExp) {
+                // levels up multiple time as currentExp exceeds max exp
+                if (playerData.player_currentExp >= playerData.player_maxExp)
+                {
+                    float leftExp = playerData.player_currentExp - playerData.player_maxExp;
+                    LevelUp();
 
-            //GameController.Instance.SaveGame();
+                    playerData.player_currentExp += leftExp;
+                }
+            }
+            expManager.UpdateExp(playerData.player_currentExp, playerData.player_maxExp);
+
         } else
         {
             Debug.Log("Gained exp");
@@ -176,18 +184,16 @@ public class PlayerController : MonoBehaviour
         // TODO text popup
         UIController.Instance.UpdatePlayerLevel();
         
-        playerData.player_maxHP += (int)(Mathf.Pow(2, (float)(playerData.player_level * .03) + 1));
-        playerData.player_attack += (int)(Mathf.Pow(2, (float)(playerData.player_level * .03) + 1));
-        playerData.player_defense += (int)(Mathf.Pow(2, (float)(playerData.player_level * .03) + 1));
+        playerData.player_maxHP += (int)(Mathf.Pow(2, (float)(playerData.player_level * .08) + 1));
+        playerData.player_attack += (int)(Mathf.Pow(2, (float)(playerData.player_level * .08) + 1));
+        playerData.player_defense += (int)(Mathf.Pow(2, (float)(playerData.player_level * .08) + 1));
         playerData.player_currentHP = playerData.player_maxHP;
-
+        playerData.player_maxExp += (int)(Mathf.Pow(2, (float)(playerData.player_level * .08) + 1));
         playerData.player_currentExp = 0;
     }
 
     public void Attack(Enemy target)
     {
-
-
         float damaged = target.CalculateDamage(GameController.Instance.GetPlayerData().player_attack);
         //temp.LoseHealth(damaged);
         Debug.Log(damaged);
@@ -203,7 +209,10 @@ public class PlayerController : MonoBehaviour
 
         if (!target.attackAnimationPlaying)
         {
-            target.SetDamaged();
+            if (damaged > 0)
+            {
+                target.SetDamaged();
+            }
         }
         //GameController.Instance.SaveGame();
         // if dead
@@ -216,8 +225,6 @@ public class PlayerController : MonoBehaviour
 
             Debug.Log("Enemy dead!!");
 
-            //target.gameObject.SetActive(false);
-            //target.health.transform.parent.gameObject.SetActive(false);
             GameController.Instance.DeleteFirstEnemy();
 
             // when all enemies are dead in a round

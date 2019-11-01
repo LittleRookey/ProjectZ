@@ -175,7 +175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &429736
 Transform:
   m_ObjectHideFlags: 0
@@ -5284,6 +5284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b287be7894f9b7e4c847af62a4e2491f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
 --- !u!1 &157782
 GameObject:
   m_ObjectHideFlags: 0
@@ -5421,10 +5422,13 @@ MonoBehaviour:
   dropExp: 1
   id: 2
   enemyStatus: 0
-  isTank: 0
-  isDPS: 0
+  actSpeed: 0
+  maxEnergy: 5
+  startEnergy: 0
+  currentEnergy: 0
+  speedImage: {fileID: 0}
   attackAnimationPlaying: 0
-  floatingTextPrefab: {fileID: 6398417660303708657, guid: 81f9b46679b0d104f88321db938bdbf2,
+  floatingTextPrefab: {fileID: 3029012024258112190, guid: 05821013a6390524eabfde0f3a638481,
     type: 3}
 --- !u!1 &163692
 GameObject:
@@ -5921,7 +5925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &453424
 Transform:
   m_ObjectHideFlags: 0

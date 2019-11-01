@@ -5520,7 +5520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &478786
 Transform:
   m_ObjectHideFlags: 0
@@ -5822,5 +5822,5 @@ MonoBehaviour:
   isTank: 0
   isDPS: 0
   attackAnimationPlaying: 0
-  floatingTextPrefab: {fileID: 6398417660303708657, guid: 81f9b46679b0d104f88321db938bdbf2,
+  floatingTextPrefab: {fileID: 3029012024258112190, guid: 05821013a6390524eabfde0f3a638481,
     type: 3}

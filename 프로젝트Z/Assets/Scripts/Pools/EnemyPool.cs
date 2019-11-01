@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class EnemyPool : ObjectPool<Enemy>
 {
-    //[SerializeField]
+    [SerializeField]
+    private VFXPool vPool;
 
+    protected override Enemy AddFunctionality(int id)
+    {
+        Enemy enem = Instantiate(mOrigin[id]);
+        enem.SetVFXPool(vPool);
+        mPool[id].Add(enem);
+        return enem;
+    }
     //protected override Enemy AddFunctionality(int id)
     //{
     //    Enemy enem = Instantiate(mOrigin[id]);

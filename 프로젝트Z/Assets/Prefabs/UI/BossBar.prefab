@@ -25,12 +25,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2384642179761943930}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2384642180748574693}
-  m_RootOrder: 2
+  m_Father: {fileID: 2384642180748566527}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 2384642180748574693}
   - component: {fileID: 2384642180748494909}
   - component: {fileID: 2384642180717721623}
+  - component: {fileID: 5210193765264846323}
   m_Layer: 5
   m_Name: BossBar
   m_TagString: Untagged
@@ -110,7 +111,6 @@ RectTransform:
   m_Children:
   - {fileID: 2384642180748566527}
   - {fileID: 2384642180748563191}
-  - {fileID: 2384642179761943933}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -156,6 +156,21 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &5210193765264846323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2384642180728272749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ed4e97c829acc4e94db79e6a5358d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthImage: {fileID: 2384642180717713975}
+  healthText: {fileID: 2384642179761943932}
+  speed: {fileID: 3208158655392958154}
 --- !u!1 &2384642180728384277
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +182,6 @@ GameObject:
   - component: {fileID: 2384642180748566527}
   - component: {fileID: 2384642180748284601}
   - component: {fileID: 2384642180717713975}
-  - component: {fileID: 2384642180728316708}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -185,7 +199,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2384642179761943933}
   m_Father: {fileID: 2384642180748574693}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -231,19 +246,6 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &2384642180728316708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2384642180728384277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 128d9449abe840f43a60568548a9d754, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthText: {fileID: 0}
 --- !u!1 &2384642180728448539
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +257,7 @@ GameObject:
   - component: {fileID: 2384642180748563191}
   - component: {fileID: 2384642180748298171}
   - component: {fileID: 2384642180717726841}
+  - component: {fileID: 3208158655392958154}
   m_Layer: 5
   m_Name: SpeedBar
   m_TagString: Untagged
@@ -318,3 +321,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &3208158655392958154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2384642180728448539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca061bfad4d393419d410b951d7a6b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actSpeed: 1
+  maxEnergy: 5
+  startEnergy: 0
+  currentEnergy: 0
+  speedImage: {fileID: 2384642180717726841}

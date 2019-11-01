@@ -111,10 +111,18 @@ public class GameController : MonoBehaviour
 
             // touch set active, toggle set inactive
             InitGame();
-
+            int stage = playerData.game_stage;
+            playerData.game_enemySpawnedThisRound = playerData.game_stage % 3 + 1;
             // Spawn enemy by the given number
             /*SpawnEnemies(playerData.game_enemySpawnedThisRound)*/
-            SpawnEnemies(playerData.game_enemySpawnedThisRound);
+            if (stage % bossSpawnPeriod != 0)
+            {
+                SpawnEnemies(playerData.game_enemySpawnedThisRound);
+            }
+            else
+            {
+                SpawnBoss();
+            }
         }
     }
 
@@ -131,19 +139,11 @@ public class GameController : MonoBehaviour
     {
         //TODO show gamestage effect or animation
         playerData.game_stage++;
-        int stage = playerData.game_stage;
-        playerData.game_enemySpawnedThisRound = playerData.game_stage % 3 + 1;
         TouchManager.Instance.gameObject.SetActive(false);
         TurnToggle(true);
         EmptyEnemiesAndHealth();
 
-        if (stage % bossSpawnPeriod != 0)
-        {
-            SpawnEnemy(5f);
-        } else
-        {
-            SpawnBoss();
-        }
+        SpawnEnemy(5f);
     }
 
     // after one monster is spawned at the very beginning
@@ -166,8 +166,6 @@ public class GameController : MonoBehaviour
 
     public void SpawnEnemies(int num)
     {
-
-
         int playerLevel = playerData.player_level;
         for (int i = 0; i < num; ++i)
         {
@@ -190,13 +188,15 @@ public class GameController : MonoBehaviour
 
     public void SpawnBoss(int num = 1)
     {
+        int playerLevel = playerData.player_level;
+
         for (int i = 0; i < num; i++)
         {
             int randNum = Random.Range(0, bosses.Count);
             Enemy bossClone = bossPool.GetFromPool(randNum);
             currentEnemies.Add(bossClone);
         }
-        LocateEnemies(currentEnemies);
+        LocateBosses(currentEnemies);
     }
 
     // spawn enemy by given number
@@ -266,15 +266,14 @@ public class GameController : MonoBehaviour
         healthControl.LocateHealthBar(enemss);
     }
 
-    public void LocateBosses(List<Enemy> bosses)
+    public void LocateBosses(List<Enemy> bosse)
     {
-        SortEnemy(bosses);
-        for(int i = 0; i < bosses.Count; ++i)
+        SortEnemy(bosse);
+        for (int k = 0; k < bosse.Count; ++k)
         {
-            bosses[i].transform.position = bossSpawnPos[i].position;
+            bosse[k].transform.position = bossSpawnPos[k].position;
         }
-
-
+        healthControl.Locatebosshealthbar(bosse);
     }
     
     // sorts enemy based on their forwardNumber
@@ -322,6 +321,7 @@ public class GameController : MonoBehaviour
     {
         currentEnemies.Clear();
         healthControl.currentHealths.Clear();
+        healthControl.HPTexts.Clear();
     }
     
     // Calls and clones enemies by given ids

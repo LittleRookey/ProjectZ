@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 444322}
   - component: {fileID: 9586614}
   - component: {fileID: 6119726}
+  - component: {fileID: 2096184193092101619}
   m_Layer: 8
   m_Name: boss_DukGakSiDaeWang
   m_TagString: Enemy
@@ -205,7 +206,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122138}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: fc8c2f3af5e2660419d7b760ec145f8a, type: 2}
   m_CullingMode: 0
@@ -242,6 +243,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5477928, y: 1.5958433}
   m_EdgeRadius: 0
+--- !u!114 &2096184193092101619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b287be7894f9b7e4c847af62a4e2491f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &135518
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,8 +678,6 @@ MonoBehaviour:
   dropExp: 30
   id: 101
   enemyStatus: 0
-  isTank: 0
-  isDPS: 0
   attackAnimationPlaying: 0
   floatingTextPrefab: {fileID: 3029012024258112190, guid: 05821013a6390524eabfde0f3a638481,
     type: 3}
@@ -1033,7 +1044,7 @@ ParticleSystem:
         m_RotationOrder: 0
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -1086,7 +1097,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -1139,7 +1150,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -1192,7 +1203,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:

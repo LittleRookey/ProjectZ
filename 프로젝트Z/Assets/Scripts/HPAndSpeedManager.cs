@@ -5,24 +5,37 @@ using UnityEngine.UI;
 
 public class HPAndSpeedManager : MonoBehaviour
 {
+
     [SerializeField]
     private Image healthImage;
     [SerializeField]
     private Text healthText;
     // 나중에 스피드도 add하기
 
-    private void OnEnable()
-    {
-        Init();
-    }
+    [SerializeField]
+    private Image speedImg;
 
     public void Init()
     {
-        Debug.Log(healthImage);
-        Debug.Log(healthText);
+        //Debug.Log(healthImage);
+        //Debug.Log(healthText);
         healthImage.fillAmount = 1f;
         healthText.text = "";
     }
+
+    public Image GetSpeed()
+    {
+        return speedImg;
+    }
+    public void SetHealthImage(Image img)
+    {
+        healthImage = img;
+    }
+
+    public void SetHealthText(Text txt)
+    {
+        healthText = txt;
+    } 
 
     public Text GetText()
     {
@@ -37,7 +50,8 @@ public class HPAndSpeedManager : MonoBehaviour
     public void ShowHP(float current, float max)
     {
         healthImage.fillAmount = current / max;
-        Debug.Log(current + "/" + max + "\n" + current / max);
         healthText.text = current.ToString();
     }
+
+    
 }

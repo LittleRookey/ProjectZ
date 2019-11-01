@@ -231,10 +231,8 @@ MonoBehaviour:
   dropExp: 1
   id: 1
   enemyStatus: 0
-  isTank: 0
-  isDPS: 0
   attackAnimationPlaying: 0
-  floatingTextPrefab: {fileID: 6398417660303708657, guid: 81f9b46679b0d104f88321db938bdbf2,
+  floatingTextPrefab: {fileID: 3029012024258112190, guid: 05821013a6390524eabfde0f3a638481,
     type: 3}
 --- !u!1 &178924
 GameObject:
@@ -4930,14 +4928,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188144}
   m_LocalRotation: {x: 0, y: 0, z: 0.07909333, w: 0.99686724}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.113, y: -0.062, z: 0}
+  m_LocalScale: {x: 1.139, y: 1.084, z: 1}
   m_Children:
   - {fileID: 492340}
   - {fileID: 487662}
   m_Father: {fileID: 423430}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 8.115082}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.7970557}
 --- !u!212 &21219212
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5129,7 +5127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &412174
 Transform:
   m_ObjectHideFlags: 0

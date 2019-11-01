@@ -117,7 +117,8 @@ public class TouchManager : MonoBehaviour
                     Debug.Log("Click");
                     // effect instantiate
                     //UIController.Instance.TurnOnOrOffButton();
-                    player.Attack(GameController.Instance.GetFrontEnemy());
+                    player.Touch(hit.point);
+                    
                     
                 }
             }
