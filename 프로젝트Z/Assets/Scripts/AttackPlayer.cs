@@ -18,9 +18,24 @@ public class AttackPlayer : MonoBehaviour
         enemy.Attack(PlayerController.Instance);
     }
 
+    public void StopSpeed()
+    {
+        enemy.StopRunning(true);
+    }
+    
+    public void RestartSpeed()
+    {
+        enemy.StopRunning(false);
+    }
+
     public void UseEffect(eEffectType eff)
     {
         enemy.UseEffect(eff);        
+    }
+
+    public void UseEffects(List<eEffectType> effs)
+    {
+        enemy.UseEffects(effs);
     }
 
     public void SetIdle()

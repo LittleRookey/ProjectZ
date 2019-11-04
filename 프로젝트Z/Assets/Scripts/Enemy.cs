@@ -58,6 +58,9 @@ public class Enemy : MonoBehaviour
     public bool attackAnimationPlaying;
 
     [SerializeField]
+    private bool duringAtk;
+
+    [SerializeField]
     private MonsterData monsterData;
 
     [SerializeField]
@@ -66,9 +69,11 @@ public class Enemy : MonoBehaviour
     //[SerializeField]
     //private List<Skill> skills;
 
+    private float saveSpeed;
 
     private void OnEnable()
-    { 
+    {
+        duringAtk = false;
         isAlive = true;
     }
 
@@ -91,8 +96,19 @@ public class Enemy : MonoBehaviour
     {
         Timer t = vPool.GetFromPool((int)eEffect);
         t.transform.position = transform.position;
-
+        t.transform.position += Vector3.up * 2;
     }
+
+    public void UseEffects(List<eEffectType> eEffectTypes)
+    {
+        for(int i = 0; i < eEffectTypes.Count; ++i)
+        {
+            Timer t = vPool.GetFromPool((int)eEffectTypes[i]);
+            t.transform.position = transform.position;
+            t.transform.position += Vector3.up * 2;
+        }
+    }
+
     public void ResetMonster()
     {
         currentHP = maxHP;
@@ -325,15 +341,25 @@ public class Enemy : MonoBehaviour
         speedImage.fillAmount = current / max;
     }
 
+    // if false, run speed
+    // else stop speed and run atk animation
+    public void StopRunning(bool isRun)
+    {
+        duringAtk = isRun;
+    }
+
 
     private void Update()
     {
-        if (currentEnergy >= maxEnergy)
+        if (!duringAtk)
         {
-            // enemy attack player
-            SetAttack();
-            currentEnergy = startEnergy;
+            if (currentEnergy >= maxEnergy)
+            {
+                // enemy attack player
+                SetAttack();
+                currentEnergy = startEnergy;
+            }
+            AddEnergy();
         }
-        AddEnergy();
     }
 }

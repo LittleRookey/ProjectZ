@@ -15,8 +15,17 @@ public enum eEffectType
     general_bloodyAtk,
     magicAtk1,
     magicAtk2,
-    waterAtk
-
+    waterAtk,
+    fireBomb,
+    fireHit, 
+    fireWork,
+    b_bloodyDark,
+    b_brightFire,
+    b_brightLight,
+    b_darkIce,
+    b_fire,
+    b_magicLight,
+    b_water
 }
 public class VFXPool : ObjectPool<Timer>
 {

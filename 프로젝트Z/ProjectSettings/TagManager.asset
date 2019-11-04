@@ -52,6 +52,9 @@ TagManager:
   - name: HPText
     uniqueID: 3109526633
     locked: 0
+  - name: VFX
+    uniqueID: 9050035
+    locked: 0
   - name: UI
     uniqueID: 1896344469
     locked: 0

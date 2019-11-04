@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 231
+  m_Text: 
 --- !u!1 &2384642180728272749
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthImage: {fileID: 2384642180717713975}
   healthText: {fileID: 2384642179761943932}
-  speed: {fileID: 3208158655392958154}
+  speedImg: {fileID: 2384642180717726841}
 --- !u!1 &2384642180728384277
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +257,6 @@ GameObject:
   - component: {fileID: 2384642180748563191}
   - component: {fileID: 2384642180748298171}
   - component: {fileID: 2384642180717726841}
-  - component: {fileID: 3208158655392958154}
   m_Layer: 5
   m_Name: SpeedBar
   m_TagString: Untagged
@@ -317,24 +316,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &3208158655392958154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2384642180728448539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca061bfad4d393419d410b951d7a6b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actSpeed: 1
-  maxEnergy: 5
-  startEnergy: 0
-  currentEnergy: 0
-  speedImage: {fileID: 2384642180717726841}
