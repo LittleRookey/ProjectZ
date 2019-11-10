@@ -13,7 +13,6 @@ public class AttackPlayer : MonoBehaviour
     }
     public void AttacksPlayer()
     {
-        Debug.Log("Attacked player");
 
         enemy.Attack(PlayerController.Instance);
     }

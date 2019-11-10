@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
 
     public HPAndSpeedManager health;
     public Text healthText;
+
+    [Header("Basic Inf")]
     [SerializeField]
     private string char_name;
     [SerializeField]
@@ -29,15 +31,26 @@ public class Enemy : MonoBehaviour
     private float defense;
     [SerializeField]
     private int forwardNumber; // bigger the forward number is, enemy will stand at the front line
-    public bool isAlive;
     [SerializeField]
-    private int dropGold;
+    private double dropGold;
     [SerializeField]
     private int dropExp;
     [SerializeField]
     private int id;
     public eEnemyStatus enemyStatus;
+    [SerializeField]
+    public bool isBoss, isEnemy;
+    public bool IsAlive
+    {
+        get
+        {
+            return currentHP > 0;
+        }
+    }
 
+
+
+    [Header("ActSpeed")]
     [SerializeField]
     private float actSpeed;
 
@@ -61,9 +74,6 @@ public class Enemy : MonoBehaviour
     private bool duringAtk;
 
     [SerializeField]
-    private MonsterData monsterData;
-
-    [SerializeField]
     private GameObject floatingTextPrefab;
 
     //[SerializeField]
@@ -73,8 +83,7 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        duringAtk = false;
-        isAlive = true;
+        ResetMonster();
     }
 
     public void Init(float hp, float attk, float def, int m_dropGold, int m_dropExp)
@@ -85,6 +94,18 @@ public class Enemy : MonoBehaviour
         defense = def;
         dropGold = m_dropGold;
         dropExp = m_dropExp;
+    }
+
+    private void ResetMonster()
+    {
+        currentHP = maxHP;
+        currentEnergy = 0f;
+        duringAtk = false;
+        //for(int i = 0; i < spriteMon.Length; i++)
+        //{
+        //    spriteMon[i].color += Color.black * 255f;
+        //}
+        
     }
 
     public void SetVFXPool(VFXPool vp)
@@ -109,23 +130,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void ResetMonster()
-    {
-        currentHP = maxHP;
-        //health.ShowHP(currentHP, maxHP);
-    }
-
-    public bool isDead()
-    {
-        if (currentHP > 0)
-        {
-            return false;
-        }
-
-        isAlive = false;
-        return true;
-    }
-
     public int getID()
     {
         return id;
@@ -134,28 +138,19 @@ public class Enemy : MonoBehaviour
     public void Attack(PlayerController target)
     {
         target.LoseHealth(attack);
-        Debug.Log("Player lost hp");
-
-        //if(floatingTextPrefab)
-        //{
-        //    ShowFloatingText();
-        //    Debug.Log("SHow Text");
-        //}
 
         target.health.ShowHPPlayer(target.getCurrentHP(), target.getMaxHP());
 
         // if dead gameover
-        if (target.isDead())
+        if (!target.IsAlive)
         {
-            Debug.Log("Player dead!!");
-            //animate dead anim
 
+            //Show GUI to player penalty
             // give penalty to player
 
-            // Reload scene
+            // Reload scene by -10 stage
 
         }
-        
 
     }
 
@@ -167,9 +162,16 @@ public class Enemy : MonoBehaviour
     // damage received
     public float CalculateDamage(float atk)
     {
-        if(atk - defense <= 0)
+        PlayerData playerData = GameController.Instance.GetPlayerData();
+        if (atk - defense <= 0)
         {
-            return 0;
+            return 1;
+        }
+       
+        float randNum = Random.Range(0f, 100f);
+        if (randNum <= playerData.player_critRate)
+        {
+            return (atk - defense) * playerData.player_critDamage;
         }
         return atk - defense;
 
@@ -180,7 +182,7 @@ public class Enemy : MonoBehaviour
         currentHP -= atk;
     }
 
-    public int getDropGold()
+    public double getDropGold()
     {
         return dropGold;
     }
@@ -245,7 +247,6 @@ public class Enemy : MonoBehaviour
     {
         //StartCoroutine(Action());
         enemyStatus = eEnemyStatus.Idle;
-        isAlive = true;
         attackAnimationPlaying = false;
     }
 
@@ -310,6 +311,7 @@ public class Enemy : MonoBehaviour
 
     public void SetDead()
     {
+        StopRunning(true);
         anim.SetTrigger("dead");
         attackAnimationPlaying = false;
         health.gameObject.SetActive(false);
@@ -348,6 +350,11 @@ public class Enemy : MonoBehaviour
         duringAtk = isRun;
     }
 
+    private IEnumerator Timer(float secs)
+    {
+        yield return new WaitForSeconds(secs);
+        gameObject.SetActive(false);
+    }
 
     private void Update()
     {

@@ -453,17 +453,19 @@ MonoBehaviour:
   attack: 17
   defense: 3
   forwardNumber: 6
-  isAlive: 0
-  dropGold: 5
+  dropGold: 6
   dropExp: 2
   id: 3
   enemyStatus: 0
+  isBoss: 0
+  isEnemy: 1
   actSpeed: 0
   maxEnergy: 5
   startEnergy: 0
   currentEnergy: 0
   speedImage: {fileID: 0}
   attackAnimationPlaying: 0
+  duringAtk: 0
   floatingTextPrefab: {fileID: 3029012024258112190, guid: 05821013a6390524eabfde0f3a638481,
     type: 3}
 --- !u!1 &139900

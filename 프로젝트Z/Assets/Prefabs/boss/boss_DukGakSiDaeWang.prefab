@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b287be7894f9b7e4c847af62a4e2491f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
 --- !u!1 &135518
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,12 +674,19 @@ MonoBehaviour:
   attack: 25
   defense: 30
   forwardNumber: 101
-  isAlive: 0
-  dropGold: 200
+  dropGold: 52
   dropExp: 30
   id: 101
   enemyStatus: 0
+  isBoss: 1
+  isEnemy: 0
+  actSpeed: 0
+  maxEnergy: 5
+  startEnergy: 0
+  currentEnergy: 0
+  speedImage: {fileID: 0}
   attackAnimationPlaying: 0
+  duringAtk: 0
   floatingTextPrefab: {fileID: 3029012024258112190, guid: 05821013a6390524eabfde0f3a638481,
     type: 3}
 --- !u!1 &187388

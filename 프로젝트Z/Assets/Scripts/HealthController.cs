@@ -45,7 +45,6 @@ public class HealthController : MonoBehaviour
     // for enemy
     public void LocateHealthBar(List<Enemy> enemy)
     {
-        Debug.Log("HP Located");
         for(int i = 0; i < enemy.Count; ++i)
         {
             // TODO critical image need to be used
@@ -64,7 +63,7 @@ public class HealthController : MonoBehaviour
             enemy[i].SetHealth(currentHealths[i]);
 
             // Reset monster health every spawn
-            enemy[i].ResetMonster();
+            //enemy[i].ResetMonster();
             enemy[i].healthText = HPTexts[i];
 
             //enemy[i].healthText.text = enemy[i].getCurrentHP().ToString() + " / " 
@@ -96,7 +95,7 @@ public class HealthController : MonoBehaviour
             enemy[i].SetHealth(currentHealths[i]);
 
             // Reset monster health every spawn
-            enemy[i].ResetMonster();
+            //enemy[i].ResetMonster();
             Debug.Log(enemy.Count);
             enemy[i].healthText = HPTexts[i];
         }

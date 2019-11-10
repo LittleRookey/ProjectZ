@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
     private Coroutine wait_Run;
 
     [SerializeField]
-    private int enemySpawnedNumber, enemyDeadNum;
+    private int enemySpawnedNumber, enemySpawnNumLimitStage, enemyDeadNum;
 
     [SerializeField]
     private int bossSpawnPeriod = 10;
@@ -90,38 +90,34 @@ public class GameController : MonoBehaviour
             {
                 yield return new WaitForSeconds(1f);
                 seconds--;
-                Debug.Log("Seconds After");
-
             } else
             {
-                Debug.Log("Coroutine Stopped");
                 break;
             }
             
         }
-        
-        Debug.Log("1");
         // if toggle is yet false, make it true
         if (!toggleOn)
             toggleOn = !toggleOn;
 
         if (toggleOn)
         {
-            Debug.Log("Enemy spawned");
-
             // touch set active, toggle set inactive
             InitGame();
+            UIController.Instance.UpdateStage(playerData.game_stage);
             int stage = playerData.game_stage;
             playerData.game_enemySpawnedThisRound = playerData.game_stage % 3 + 1;
             // Spawn enemy by the given number
             /*SpawnEnemies(playerData.game_enemySpawnedThisRound)*/
-            if (stage % bossSpawnPeriod != 0)
+            Debug.Log(stage % bossSpawnPeriod);
+            if (stage % bossSpawnPeriod != 9)
             {
                 SpawnEnemies(playerData.game_enemySpawnedThisRound);
             }
             else
             {
                 SpawnBoss();
+                // TODO when boss is dead, upgrade all enemies by 1 level
             }
         }
     }
@@ -138,7 +134,11 @@ public class GameController : MonoBehaviour
     public void GoToNextStage()
     {
         //TODO show gamestage effect or animation
-        playerData.game_stage++;
+        int stage = playerData.game_stage++;
+        if(stage % 50 == 0 && stage <= 150)
+        {
+            playerData.game_enemySpawnLimitStage += 3;
+        }
         TouchManager.Instance.gameObject.SetActive(false);
         TurnToggle(true);
         EmptyEnemiesAndHealth();
@@ -155,8 +155,6 @@ public class GameController : MonoBehaviour
             wait_Run = StartCoroutine(SelectInSeconds(seconds));   
         } else
         {
-            Debug.Log("First Spawn");
-
             // touch set active, toggle set inactive
             InitGame();
             // Spawn enemy by the given number
@@ -169,7 +167,7 @@ public class GameController : MonoBehaviour
         int playerLevel = playerData.player_level;
         for (int i = 0; i < num; ++i)
         {
-            int randNum = Random.Range(0, enemies.Count);
+            int randNum = Random.Range(0, playerData.game_enemySpawnLimitStage);
             Enemy clone = enemyPool.GetFromPool(randNum);
             //clone.Init((int)((playerLevel + .5 * gameStage) * 100), 
             //    (int)((playerLevel + .5 * gameStage) * 10),
@@ -309,10 +307,8 @@ public class GameController : MonoBehaviour
 
         for(int i = 0; i < currentEnemies.Count; ++i) 
         {
-            allDead = allDead && !currentEnemies[i].isAlive;
+            allDead = allDead && !currentEnemies[i].IsAlive;
         }
-
-        
         return allDead;
     }
 
@@ -391,16 +387,19 @@ public class GameController : MonoBehaviour
 
     public void DeleteFirstEnemy()
     {
+        currentEnemies[0].gameObject.SetActive(false);
         currentEnemies.RemoveAt(0);
     }
 
-    
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log((int)4.9999 + " " + (int)5.00001);
         PlayerPrefs.DeleteAll();
         LoadGame();
         PlayerController.Instance.SetPlayerData(playerData);
+        UIController.Instance.SetPlayerData(playerData);
+        ShopController.Instance.SetPlayerData(playerData);
         enemySpawnedNumber = 0;
         toggleOn = true;
         SpawnEnemy(0f);
@@ -412,9 +411,74 @@ public class GameController : MonoBehaviour
         UIController.Instance.UpdatePlayerLevel();
         UIController.Instance.UpdatePlayerInfoStat();
         expManager.UpdateExp(PlayerController.Instance.GetCurrentExp(), PlayerController.Instance.GetMaxExp());
-        //TODO update player hp
+        UIController.Instance.UpdateStage(playerData.game_stage);
 
     }
+
+    public void UseItem(Item item)
+    {
+        switch (item.itemType)
+        {
+            case eItemType.potion_AttkLow:
+                Debug.Log("item value: " + (int)item.Value);
+                playerData.player_attack += Random.Range(1, (int)item.Value + 1);
+                break;
+            case eItemType.potion_AttkMid:
+                Debug.Log("item value: " + (int)item.Value);
+                playerData.player_attack += Random.Range(3, (int)item.Value + 1);
+                break;
+            case eItemType.potion_AttkHigh:
+                Debug.Log("item value: " + (int)item.Value);
+                playerData.player_attack += Random.Range(5, (int)item.Value + 1);
+                break;
+            case eItemType.potion_DefenseLow:
+                Debug.Log("item value: " + (int)item.Value);
+                playerData.player_defense += Random.Range(1, (int)item.Value + 1);
+                break;
+            case eItemType.potion_DefenseMid:
+                Debug.Log("item value: " + (int)item.Value);
+                playerData.player_defense += Random.Range(3, (int)item.Value + 1);
+                break;
+            case eItemType.potion_DefenseHigh:
+                Debug.Log("item value: " + (int)item.Value);
+                playerData.player_defense += Random.Range(5, (int)item.Value + 1);
+                break;
+            case eItemType.potion_HpLow:
+                Debug.Log("item value: " + item.Value);
+                PlayerController.Instance.GainHealth(playerData.player_maxHP * item.Value);
+                break;
+            case eItemType.potion_HpMid:
+                Debug.Log("item value: " + item.Value);
+                PlayerController.Instance.GainHealth(playerData.player_maxHP * item.Value);
+                break;
+            case eItemType.potion_HpHigh:
+                Debug.Log("item value: " + item.Value);
+                PlayerController.Instance.GainHealth(playerData.player_maxHP * item.Value);
+                break;
+            case eItemType.potion_ExpLow:
+                Debug.Log("item value: " + item.Value);
+                PlayerController.Instance.GainExp(item.Value);
+                break;
+            case eItemType.potion_ExpMid:
+                Debug.Log("item value: " + item.Value);
+                PlayerController.Instance.GainExp(item.Value);
+                break;
+            case eItemType.potion_ExpHigh:
+                Debug.Log("item value: " + item.Value);
+                PlayerController.Instance.GainExp(item.Value);
+                break;
+            case eItemType.potion_CritRate:
+                playerData.player_critRate += Random.Range(0.01f, item.Value);
+                break;
+            case eItemType.potion_CritDamage:
+                playerData.player_critDamage += Random.Range(.25f, item.Value);
+                break;
+            default:
+                Debug.LogError("No such Item exists");
+                break;
+        }
+    }
+
     //public void ResetData()
     //{
     //    Debug.Log("SetnewData");
@@ -455,11 +519,5 @@ public class GameController : MonoBehaviour
     {
         SaveGame();
     }
-    // Update is called once per frame
-    void Update()
-    {
 
-        
-
-    }
 }

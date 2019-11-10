@@ -5451,11 +5451,12 @@ MonoBehaviour:
   attack: 30
   defense: 10
   forwardNumber: 1
-  isAlive: 0
-  dropGold: 250
+  dropGold: 57
   dropExp: 20
   id: 100
   enemyStatus: 1
+  isBoss: 1
+  isEnemy: 0
   actSpeed: 0
   maxEnergy: 5
   startEnergy: 0

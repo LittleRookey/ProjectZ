@@ -30,7 +30,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 456390}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15.2641}
 --- !u!212 &21224120
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b287be7894f9b7e4c847af62a4e2491f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
 --- !u!1 &114090
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +204,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 456390}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -52.9743}
 --- !u!212 &21258534
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -282,7 +283,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 421566}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.8459}
 --- !u!212 &21243140
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -365,7 +366,7 @@ Transform:
   - {fileID: 492184}
   m_Father: {fileID: 446812}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -35.1056}
 --- !u!212 &21283550
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -444,7 +445,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 456390}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 28.411098}
 --- !u!212 &21246226
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -523,7 +524,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 421566}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 7.5512996}
 --- !u!212 &21209892
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5344,7 +5345,7 @@ Transform:
   - {fileID: 421566}
   m_Father: {fileID: 456390}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10.1953}
 --- !u!212 &21251618
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5446,15 +5447,19 @@ MonoBehaviour:
   attack: 55
   defense: 20
   forwardNumber: 106
-  isAlive: 0
-  dropGold: 300
+  dropGold: 53
   dropExp: 30
   id: 106
   enemyStatus: 0
-  isTank: 0
-  isDPS: 0
   isBoss: 1
+  isEnemy: 0
+  actSpeed: 0
+  maxEnergy: 5
+  startEnergy: 0
+  currentEnergy: 0
+  speedImage: {fileID: 0}
   attackAnimationPlaying: 0
+  duringAtk: 0
   floatingTextPrefab: {fileID: 3029012024258112190, guid: 05821013a6390524eabfde0f3a638481,
     type: 3}
 --- !u!1 &186036
@@ -5614,7 +5619,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 421566}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.8459}
 --- !u!212 &21209022
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5693,7 +5698,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 421566}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -6.157}
 --- !u!212 &21260886
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5776,7 +5781,7 @@ Transform:
   - {fileID: 446812}
   m_Father: {fileID: 424724}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.9538999}
 --- !u!212 &21233198
 SpriteRenderer:
   m_ObjectHideFlags: 0

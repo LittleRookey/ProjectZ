@@ -35,7 +35,16 @@ public class PlayerController : MonoBehaviour
     //[SerializeField]
     //private float currentExp;
 
-    public bool isAlive;
+    public bool IsAlive
+    {
+        get
+        {
+            return playerData.player_currentHP > 0;
+        }
+    }
+
+    [SerializeField]
+    private ShopController shopControl;
 
     [SerializeField]
     private DamageTextPool dmgPool;
@@ -52,8 +61,6 @@ public class PlayerController : MonoBehaviour
     public Health health;
 
     private List<GameObject> skills;
-
-    private List<Item> p_inventory;
 
     private bool blockSkillOn = false;
 
@@ -72,23 +79,22 @@ public class PlayerController : MonoBehaviour
         skills = new List<GameObject>();
     }
 
-    public bool isDead()
-    {
-        if(getCurrentHP() > 0)
-        {
-            return false;
-        } 
-
-        isAlive = false;
-        return true;
-    }
-
     // damage received
     public float CalculateDamage(float atk)
     {
+
         if(atk - playerData.player_defense <= 0)
         {
             return 0;
+        }
+        else if(atk - playerData.player_defense <= 0)
+        {
+            return 1;
+        }
+        float randNum = Random.Range(0f, 100f);
+        if (randNum <= playerData.player_critRate)
+        {
+            return (atk - playerData.player_defense) * 1.5f;
         }
         return atk - playerData.player_defense;
 
@@ -101,6 +107,19 @@ public class PlayerController : MonoBehaviour
             return;
         }
         playerData.player_currentHP -= atk;
+    }
+
+    public void GainHealth(float given)
+    {
+        if (given + playerData.player_currentHP > playerData.player_maxHP)
+        {
+            playerData.player_currentHP = playerData.player_maxHP;
+        }
+        else
+        {
+            playerData.player_currentHP += given;
+        }
+        health.ShowHPPlayer(playerData.player_currentHP, playerData.player_maxHP);
     }
 
     public void BlockDamage()
@@ -120,8 +139,9 @@ public class PlayerController : MonoBehaviour
     public void Touch(Vector3 hitPos)
     {
         Attack(GameController.Instance.GetFrontEnemy());
-        Timer t = vPool.GetFromPool(1);
+        Timer t = vPool.GetFromPool(Random.Range(0, 2));
         t.transform.position = hitPos;
+        
     }
     //public void Init(string p_name, int p_hp, int p_attk, int p_def)
     //{
@@ -146,13 +166,14 @@ public class PlayerController : MonoBehaviour
         // if given exp allows level up
         if(playerData.player_currentExp + enemy.getDropExp() >= playerData.player_maxExp)
         {
-            Debug.Log(playerData.player_currentExp + ", " + enemy.getDropExp() + " max:"
-                + playerData.player_maxExp);
-            Debug.Log("LVLUP");
             // TODO player level up
             float remainExp = enemy.getDropExp() + playerData.player_currentExp - playerData.player_maxExp;
 
             LevelUp();
+            Transform tt = dmgPool.GetFromPool(2);
+            tt.position = transform.position + Vector3.up * 5f;
+            //tt.
+
             playerData.player_currentExp += remainExp;
             expManager.UpdateExp(playerData.player_currentExp, playerData.player_maxExp);
             while (playerData.player_currentExp >= playerData.player_maxExp) {
@@ -169,15 +190,52 @@ public class PlayerController : MonoBehaviour
 
         } else
         {
-            Debug.Log("Gained exp");
             playerData.player_currentExp += enemy.getDropExp();
             expManager.UpdateExp(playerData.player_currentExp, playerData.player_maxExp);
-            GameController.Instance.SaveGame();
         }
         UIController.Instance.UpdatePlayerInfoStat();
-        
+        ShopController.Instance.CheckEnoughMoney();
+        GameController.Instance.SaveGame();
     }
+        
+    public void GainExp(float value)
+    {
+        if (playerData.player_currentExp + value >= playerData.player_maxExp)
+        {
+            // TODO player level up
+            float remainExp = value + playerData.player_currentExp - playerData.player_maxExp;
 
+            LevelUp();
+            Transform tt = dmgPool.GetFromPool(2);
+            tt.position = transform.position + Vector3.up * 5f;
+            //tt.
+
+            playerData.player_currentExp += remainExp;
+            expManager.UpdateExp(playerData.player_currentExp, playerData.player_maxExp);
+            while (playerData.player_currentExp >= playerData.player_maxExp)
+            {
+                // levels up multiple time as currentExp exceeds max exp
+                if (playerData.player_currentExp >= playerData.player_maxExp)
+                {
+                    float leftExp = playerData.player_currentExp - playerData.player_maxExp;
+                    LevelUp();
+
+                    playerData.player_currentExp += leftExp;
+                }
+            }
+            expManager.UpdateExp(playerData.player_currentExp, playerData.player_maxExp);
+
+        }
+        else
+        {
+            playerData.player_currentExp += value;
+            expManager.UpdateExp(playerData.player_currentExp, playerData.player_maxExp);
+
+        }
+        UIController.Instance.UpdatePlayerInfoStat();
+        ShopController.Instance.CheckEnoughMoney();
+        GameController.Instance.SaveGame();
+    }
     public void LevelUp()
     {
         playerData.player_level++;
@@ -187,22 +245,30 @@ public class PlayerController : MonoBehaviour
         playerData.player_maxHP += (int)(Mathf.Pow(2, (float)(playerData.player_level * .08) + 1));
         playerData.player_attack += (int)(Mathf.Pow(2, (float)(playerData.player_level * .08) + 1));
         playerData.player_defense += (int)(Mathf.Pow(2, (float)(playerData.player_level * .08) + 1));
-        playerData.player_currentHP = playerData.player_maxHP;
         playerData.player_maxExp += (int)(Mathf.Pow(2, (float)(playerData.player_level * .08) + 1));
         playerData.player_currentExp = 0;
+        playerData.player_currentHP = playerData.player_maxHP;
+        health.ShowHPPlayer(playerData.player_currentHP, playerData.player_maxHP);
     }
 
     public void Attack(Enemy target)
     {
-        float damaged = target.CalculateDamage(GameController.Instance.GetPlayerData().player_attack);
-        //temp.LoseHealth(damaged);
-        Debug.Log(damaged);
+        float plyeratk = GameController.Instance.GetPlayerData().player_attack;
+        float damaged = target.CalculateDamage(plyeratk);
 
         target.LoseHealth(damaged);
+        // floating text (damage)
+        if (damaged > plyeratk - target.getDefense() && damaged > 1)
+        {
+            //crit text
+            
+            ShowCritText(target, damaged);
+        }
+        else
+        {
+            ShowFloatingText(target, damaged);
+        }
 
-       // floating text (damage)
-        ShowFloatingText(target, damaged);
-        Debug.Log("SHow Text");
         
 
         target.health.ShowHP(target.getCurrentHP(), target.getMaxHP());
@@ -216,41 +282,62 @@ public class PlayerController : MonoBehaviour
         }
         //GameController.Instance.SaveGame();
         // if dead
-        if (target.isDead())
+        if (!target.IsAlive)
         {
-
+           
             target.SetDead();
-
             GainGoldAndExp(target);
-
-            Debug.Log("Enemy dead!!");
 
             GameController.Instance.DeleteFirstEnemy();
 
             // when all enemies are dead in a round
             if (GameController.Instance.AllEnemiesDead())
             {
-                Debug.Log("Enemies all dead");
                 GameController.Instance.GoToNextStage();
             }
-
         }
-        
-       
-
-
     }
 
     private void ShowFloatingText(Enemy enemy, float damage)
     {
-        Text go = dmgPool.GetFromPool();
-        go.text = damage.ToString();
+        Transform go = dmgPool.GetFromPool();
+        go.gameObject.GetComponentInChildren<Text>().text = damage.ToString();
         //temp.transform.position = GameController.Instance.GetFrontEnemy().gameObject.transform.position + Vector3.up * 2;
-        
-        go.transform.position = GameController.Instance.GetFrontEnemy().gameObject.transform.position + Vector3.up * 1.5f;
-        go.transform.position += new Vector3(Random.Range(-randomizeVector.x, randomizeVector.x), 0, 0);
-        Debug.Log(enemy.transform.position);
+
+        if (enemy.isEnemy)
+        {
+            go.transform.position = GameController.Instance.GetFrontEnemy().gameObject.transform.position + Vector3.up * 1.5f;
+            go.transform.position += new Vector3(Random.Range(-randomizeVector.x, randomizeVector.x), 0, 0);
+        } else
+        {
+            go.transform.position = GameController.Instance.GetFrontEnemy().gameObject.transform.position + Vector3.up * 3f;
+            go.transform.position += new Vector3(Random.Range(-randomizeVector.x, randomizeVector.x), 0, 0);
+        }
         //go.gameObject.transform.localPosition += new Vector3(0, 2, 0);
+    }
+
+    private void ShowCritText(Enemy enemy, float damage)
+    {
+        Transform go = dmgPool.GetFromPool(1);
+        go.gameObject.GetComponentInChildren<Text>().text = damage.ToString();
+        //temp.transform.position = GameController.Instance.GetFrontEnemy().gameObject.transform.position + Vector3.up * 2;
+
+        if (enemy.isEnemy)
+        {
+            go.transform.position = GameController.Instance.GetFrontEnemy().gameObject.transform.position + Vector3.up * 1.5f;
+            go.transform.position += new Vector3(Random.Range(-randomizeVector.x, randomizeVector.x), 0, 0);
+        }
+        else
+        {
+            go.transform.position = GameController.Instance.GetFrontEnemy().gameObject.transform.position + Vector3.up * 3f;
+            go.transform.position += new Vector3(Random.Range(-randomizeVector.x, randomizeVector.x), 0, 0);
+        }
+        //go.gameObject.transform.localPosition += new Vector3(0, 2, 0);
+    }
+    public void BuyItem(Item item)
+    {
+        Debug.Log(item.price);
+        playerData.player_gold -= item.price;
     }
 
     public string getName()
@@ -283,7 +370,7 @@ public class PlayerController : MonoBehaviour
         return playerData.player_level;
     }
 
-    public int GetCurrentGold()
+    public double GetCurrentGold()
     {
         return playerData.player_gold;
     }
@@ -298,9 +385,26 @@ public class PlayerController : MonoBehaviour
         return playerData.player_maxExp;
     }
 
-    public void AddExp(float add)
-    {
-        playerData.player_currentExp += add;
-    }
+    //public List<Item> GetInventory()
+    //{
+    //    return playerData.player_Inventory;
+    //}
 
+
+    //public void AddToInventory(Item item)
+    //{
+    //    List<Item> inv = playerData.player_Inventory;
+    //    for (int i = 0; i < inv.Count; i++)
+    //    {
+    //        if(item.ID == inv[i].ID)
+    //        {
+    //            // if there is item in the inventory
+    //            inv[i].itemCount++;
+    //            break;
+    //        }
+    //    }
+
+    //    // if there is no item, add it to the inventory 
+
+    //}
 }

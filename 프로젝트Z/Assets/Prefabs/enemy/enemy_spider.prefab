@@ -213,11 +213,12 @@ MonoBehaviour:
   attack: 12
   defense: 1
   forwardNumber: 6
-  isAlive: 0
-  dropGold: 5
+  dropGold: 7
   dropExp: 1
   id: 11
   enemyStatus: 0
+  isBoss: 0
+  isEnemy: 1
   actSpeed: 0
   maxEnergy: 5
   startEnergy: 0

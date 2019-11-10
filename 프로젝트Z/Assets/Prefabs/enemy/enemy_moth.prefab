@@ -5656,11 +5656,12 @@ MonoBehaviour:
   attack: 10
   defense: 5
   forwardNumber: 13
-  isAlive: 0
-  dropGold: 5
+  dropGold: 6
   dropExp: 3
   id: 8
   enemyStatus: 0
+  isBoss: 0
+  isEnemy: 1
   actSpeed: 0
   maxEnergy: 5
   startEnergy: 0
@@ -5739,7 +5740,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 113
   m_Sprite: {fileID: 21300010, guid: 2c2ffd1cfb22aec418b9f4d529f7eebf, type: 3}
-  m_Color: {r: 0.6886792, g: 0.4054059, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

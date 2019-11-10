@@ -29,5 +29,14 @@ public enum eEffectType
 }
 public class VFXPool : ObjectPool<Timer>
 {
-    
+
+    [SerializeField]
+    private GameObject recycleEffectBin;
+
+    protected override Timer AddFunctionality(int id)
+    {
+        Timer temp = Instantiate(mOrigin[id], recycleEffectBin.transform);
+        mPool[id].Add(temp);
+        return temp;
+    }
 }

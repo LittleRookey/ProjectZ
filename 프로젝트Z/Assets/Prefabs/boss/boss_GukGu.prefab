@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b287be7894f9b7e4c847af62a4e2491f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
 --- !u!1 &112476
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +205,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 458534}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 17.738468}
 --- !u!212 &21291146
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -239,7 +240,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1184720979
+  m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 104
   m_Sprite: {fileID: 21300020, guid: 716508693ac89f44aa3fd10e9ee2f654, type: 3}
@@ -288,7 +289,7 @@ Transform:
   - {fileID: 495454}
   m_Father: {fileID: 410454}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.8538687}
 --- !u!212 &21207248
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -367,7 +368,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 412194}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -8.562494}
 --- !u!212 &21277754
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5108,7 +5109,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 412194}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 10.931294}
 --- !u!212 &21237646
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5187,7 +5188,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 412194}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -110.028244}
 --- !u!212 &21237660
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5270,7 +5271,7 @@ Transform:
   - {fileID: 449324}
   m_Father: {fileID: 410454}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.0539}
 --- !u!212 &21268434
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5476,7 +5477,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 458534}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 13.141793}
 --- !u!212 &21246490
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5555,7 +5556,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 412194}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -126.70247}
 --- !u!212 &21207074
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5634,7 +5635,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 458534}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -28.435307}
 --- !u!212 &21203530
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5713,7 +5714,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 458534}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 27.066355}
 --- !u!212 &21221726
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5748,7 +5749,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1184720979
+  m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 104
   m_Sprite: {fileID: 21300008, guid: 716508693ac89f44aa3fd10e9ee2f654, type: 3}
@@ -5792,7 +5793,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 412194}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.055999998}
 --- !u!212 &21232028
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5894,14 +5895,18 @@ MonoBehaviour:
   attack: 35
   defense: 25
   forwardNumber: 103
-  isAlive: 0
-  dropGold: 250
+  dropGold: 52
   dropExp: 20
   id: 103
   enemyStatus: 0
-  isTank: 0
-  isDPS: 0
   isBoss: 1
+  isEnemy: 0
+  actSpeed: 0
+  maxEnergy: 5
+  startEnergy: 0
+  currentEnergy: 0
+  speedImage: {fileID: 0}
   attackAnimationPlaying: 0
+  duringAtk: 0
   floatingTextPrefab: {fileID: 3029012024258112190, guid: 05821013a6390524eabfde0f3a638481,
     type: 3}

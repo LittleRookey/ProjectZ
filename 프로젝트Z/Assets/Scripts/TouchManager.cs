@@ -55,8 +55,6 @@ public class TouchManager : MonoBehaviour
 
 
                 Ray ray = new Ray(nearPos, farPos - nearPos);
-                Debug.Log("farpos:" + farPos);
-                Debug.Log("nearpos:" + nearPos);
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit))
                 {
@@ -87,14 +85,10 @@ public class TouchManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(!enemy.isDead())
-        //{
-               
-        //}
         //mouse
         if (CheckTouch())
         {
-            Debug.Log("Touch!");
+
         }
 #if UNITY_EDITOR
         else if (Input.GetMouseButtonDown(0))
@@ -114,7 +108,6 @@ public class TouchManager : MonoBehaviour
             {
                 if (hit.collider.gameObject == gameObject)
                 {
-                    Debug.Log("Click");
                     // effect instantiate
                     //UIController.Instance.TurnOnOrOffButton();
                     player.Touch(hit.point);

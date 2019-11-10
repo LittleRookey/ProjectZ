@@ -5,20 +5,19 @@ using UnityEngine.UI;
 
 public class FloatingText : MonoBehaviour
 {
-    Vector3 offset = new Vector3(0, 4f, 0);
+    [SerializeField]
     private Text text;
     // Start is called before the first frame update
-    void Awake()
+
+    private void OnEnable()
     {
-        //transform.localPosition += offset;
-        text = GetComponent<Text>();
-
-
+        text.color = new Color(0, 1, 0, 1);
+        text.fontSize = 110;
     }
 
     public void SetActiveFalse()
     {
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
 }

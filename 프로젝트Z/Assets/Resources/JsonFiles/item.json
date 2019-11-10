@@ -1,0 +1,156 @@
+[
+  {
+    "Name": "EXP포션(하)",
+    "icon": null,
+    "ID": 11000,
+    "Contents": "경험치를 10 얻습니다.",
+    "Value": 10,
+    "itemType": "potion_ExpLow",
+    "price": 25,
+	"itemCount": 1,
+	"isDefaultItem": false
+  },
+  {
+    "Name": "HP포션(하)",
+    "icon": null,
+    "ID": 11001,
+    "Contents": "체력을 15% 회복합니다.",
+    "Value": 0.15,
+    "itemType": "potion_HpLow",
+    "price": 20,
+	"itemCount": 1,
+	"isDefaultItem": false
+  },
+  {
+    "Name": "HP포션(중)",
+    "icon": null,
+    "ID": 11002,
+    "Contents": "체력을 25% 회복합니다.",
+    "Value": 0.25,
+    "itemType": "potion_HpMid",
+    "price": 35,
+	"itemCount": 1,
+	"isDefaultItem": false
+  },
+  {
+    "Name": "Exp포션(중)",
+    "icon": null,
+    "ID": 11003,
+    "Contents": "경험치를 40 얻습니다.",
+    "Value": 40,
+    "itemType": "potion_ExpMid",
+    "price": 50,
+	"itemCount": 1,
+	"isDefaultItem": false
+  },
+  {
+    "Name": "HP포션(상)",
+    "icon": null,
+    "ID": 11004,
+    "Contents": "체력을 40% 회복합니다.",
+    "Value": 0.40,
+    "itemType": "potion_HpHigh",
+    "price": 70,
+	"itemCount": 1,
+	"isDefaultItem": false
+  },
+  {
+    "Name": "Exp포션(상)",
+    "icon": null,
+    "ID": 11005,
+    "Contents": "경험치를 100 얻습니다.",
+    "Value": 100,
+    "itemType": "potion_ExpHigh",
+    "price": 110,
+	"itemCount": 1,
+	"isDefaultItem": false
+  },
+  {
+    "Name": "공격력포션(하)",
+    "icon": null,
+    "ID": 11006,
+    "Contents": "공격력을 1 ~ 3 영구적으로 올려줍니다.",
+    "Value": 3,
+    "itemType": "potion_AttkLow",
+    "price": 450,
+	"itemCount": 1,
+	"isDefaultItem": false
+  },
+  {
+    "Name": "방어력포션(하)",
+    "icon": null,
+    "ID": 11008,
+    "Contents": "방어력을 1 ~ 3 영구적으로 올려줍니다.",
+    "Value": 3,
+    "itemType": "potion_DefenseLow",
+    "price": 550,
+	"itemCount": 1,
+	"isDefaultItem": false
+  },
+  {
+    "Name": "공격력포션(중)",
+    "icon": null,
+    "ID": 11007,
+    "Contents": "공격력을 3 ~ 5 영구적으로 올려줍니다.",
+    "Value": 5,
+    "itemType": "potion_AttkMid",
+    "price": 1000,
+	"itemCount": 1,
+	"isDefaultItem": false
+  },
+  {
+    "Name": "방어력포션(중)",
+    "icon": null,
+    "ID": 11009,
+    "Contents": "방어력을 3 ~ 5 영구적으로 올려줍니다.",
+    "Value": 5,
+    "itemType": "potion_DefenseMid",
+    "price": 1200,
+	"itemCount": 1,
+	"isDefaultItem": false
+  },
+  {
+    "Name": "공격력포션(상)",
+    "icon": null,
+    "ID": 11010,
+    "Contents": "공격력을 5 ~ 10 영구적으로 올려줍니다.",
+    "Value": 10,
+    "itemType": "potion_AttkHigh",
+    "price": 2000,
+	"itemCount": 1,
+	"isDefaultItem": false
+  },
+  {
+    "Name": "방어포션(상)",
+    "icon": null,
+    "ID": 11011,
+    "Contents": "방어력을 5 ~ 10 영구적으로 올려줍니다.",
+    "Value": 10,
+    "itemType": "potion_DefenseHigh",
+    "price": 2200,
+	"itemCount": 1,
+	"isDefaultItem": false
+  },
+  {
+    "Name": "Crit확률포션",
+    "icon": null,
+    "ID": 11012,
+    "Contents": "크리티컬 확률을 0.01 ~ 0.03% 영구적으로 올려줍니다.",
+    "Value": 0.03,
+    "itemType": "potion_CritRate",
+    "price": 500,
+	"itemCount": 1,
+	"isDefaultItem": false
+  },
+  {
+    "Name": "Crit데미지포션",
+    "icon": null,
+    "ID": 11013,
+    "Contents": "크리티컬 데미지를 0.25 ~ 0.75% 영구적으로 올려줍니다.",
+    "Value": 0.75,
+    "itemType": "potion_CritDamage",
+    "price": 750,
+	"itemCount": 1,
+	"isDefaultItem": false
+  }
+]
